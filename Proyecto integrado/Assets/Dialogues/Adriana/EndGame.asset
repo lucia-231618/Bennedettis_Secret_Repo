@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d4ee9374a7e744f8fb652e90cc71cf, type: 3}
+  m_Name: EndGame
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - character: Adriana Benedetti
+    text: "\xA1No\u2026! No has visto la verdad\u2026 ni siquiera con todas las pistas
+      frente a ti."
+  - character: Adriana Benedetti
+    text: "Quien se equivoca\u2026 se queda conmigo\u2026 para siempre."
+  hasChoices: 0
+  choices: []

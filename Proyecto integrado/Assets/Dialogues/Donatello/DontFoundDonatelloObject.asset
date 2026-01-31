@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d4ee9374a7e744f8fb652e90cc71cf, type: 3}
+  m_Name: DontFoundDonatelloObject
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - character: Donatello Benedetti
+    text: "Todav\xEDa no has recuperado lo que necesito\u2026"
+  - character: Donatello Benedetti
+    text: 
+  - character: Donatello Benedetti
+    text: "Vuelve cuando lo tengas\u2026 no hay nada m\xE1s que pueda decirte ahora."
+  hasChoices: 0
+  choices: []

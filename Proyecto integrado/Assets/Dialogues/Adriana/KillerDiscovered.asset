@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d4ee9374a7e744f8fb652e90cc71cf, type: 3}
+  m_Name: KillerDiscovered
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - character: Adriana
+    text: "Supongo que eres m\xE1s lista de lo que pensaba pero\u2026 \xBFComo me
+      mat\xF3? "
+  hasChoices: 1
+  choices:
+  - choiceText: Cuchillo
+    choiceImage: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: e3c0bd97f192b3349a82b60abbb45dda, type: 2}
+  - choiceText: Tuberia de Plomo
+    choiceImage: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: e3c0bd97f192b3349a82b60abbb45dda, type: 2}
+  - choiceText: Belladona
+    choiceImage: {fileID: 0}
+    nextDialogue: {fileID: 0}
+  - choiceText: Martillo
+    choiceImage: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: e3c0bd97f192b3349a82b60abbb45dda, type: 2}
+  - choiceText: Pastillas
+    choiceImage: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: e3c0bd97f192b3349a82b60abbb45dda, type: 2}

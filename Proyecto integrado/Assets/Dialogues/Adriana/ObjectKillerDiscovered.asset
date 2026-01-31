@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d4ee9374a7e744f8fb652e90cc71cf, type: 3}
+  m_Name: ObjectKillerDiscovered
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - character: Adriana Benedetti
+    text: "\u2026Imposible\u2026 alguien finalmente lo descubri\xF3."
+  - character: Adriana Benedetti
+    text: "Has sido cuidadoso, atento y valiente\u2026 incluso entre los fantasmas
+      y sus secretos."
+  - character: Adriana Benedetti
+    text: "Ahora\u2026 puedo descansar. Y t\xFA\u2026 puedes salir de la mansi\xF3n."
+  hasChoices: 0
+  choices: []

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d4ee9374a7e744f8fb652e90cc71cf, type: 3}
+  m_Name: PuertaCerrada
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - character: Adriana Benedetti
+    text: "Bienvenido\u2026 veo que eres curiosa. Eso est\xE1 bien\u2026 aqu\xED
+      pocos lo son."
+  - character: Adriana Benedetti
+    text: "Esta mansi\xF3n no es un lugar para pasear\u2026 no mientras yo est\xE9
+      vigilando. Nadie sale\u2026 hasta que todo est\xE9 en su lugar."
+  - character: Adriana Benedetti
+    text: "Alguien tom\xF3 algo que me pertenece\u2026 algo muy querido\u2026 mi
+      caja de m\xFAsica."
+  - character: Adriana Benedetti
+    text: "Si quieres moverte, si quieres ver la luz otra vez, debes ayudarme a recuperarla.
+      Otros esp\xEDritus pueden darte pistas\u2026 pero ninguno te ayudar\xE1 si
+      no demuestras que puedes encontrar lo que es m\xEDo."
+  - character: Adriana Benedetti
+    text: "Hazlo\u2026 y tal vez descubras la verdad. No me falles."
+  - character: Adriana Benedetti
+    text: "\xA1Jajajajajajajajajaja!"
+  hasChoices: 0
+  choices: []

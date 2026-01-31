@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d4ee9374a7e744f8fb652e90cc71cf, type: 3}
+  m_Name: MeetAntonio
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - character: Antonio Benedetti
+    text: "\xBFQui\xE9n osa perturbar esta casa\u2026 y mis recuerdos?"
+  - character: Antonio Benedetti
+    text: "Tanto tiempo he esperado\u2026 y ahora apareces t\xFA. No temo a los vivos,
+      pero debo asegurarme de que mereces saber la verdad."
+  - character: Antonio Benedetti
+    text: "Mi libro de contabilidad\u2026 mi \xFAnica posesi\xF3n de valor\u2026
+      se lo qued\xF3 mi hermano. Solo con el puedo completar lo que qued\xF3 inconcluso"
+  - character: Antonio Benedetti
+    text: "Si lo encuentras y me lo devuelves\u2026 te dar\xE9 una pista sobre los
+      secretos de esta mansi\xF3n\u2026 y sobre la muerte de mi hija"
+  - character: Antonio Benedetti
+    text: "No te equivoques: esto no es un juego. Cada objeto que recuperes es un
+      paso hacia la verdad\u2026 o hacia tu perdici\xF3n"
+  - character: 
+    text: "\u2026 ya entiendo de donde saca esa ni\xF1a fantasmal su lado oscuro "
+  hasChoices: 0
+  choices: []
