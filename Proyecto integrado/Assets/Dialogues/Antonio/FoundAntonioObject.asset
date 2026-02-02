@@ -18,7 +18,7 @@ MonoBehaviour:
   - character: Antonio Benedetti
     text: "Con esto puedo revelarte algo que te acercar\xE1 a la verdad sobre Adriana\u2026"
   - character: Antonio Benedetti
-    text: 'Quien conoce cada aroma y cada fuego, no deja rastro de oscuridad en la
-      comida; sus manos solo saben dar sustento, no dolor escondido '
+    text: Quien conoce cada aroma y cada fuego, no deja rastro de oscuridad en la
+      comida; sus manos solo saben dar sustento, no dolor escondido
   hasChoices: 0
   choices: []

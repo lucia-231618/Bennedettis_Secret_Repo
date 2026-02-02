@@ -24,6 +24,11 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // Si hay diálogo activo, no hacemos nada
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive())
+            return;
+
         Movement();
         Flip();
     }

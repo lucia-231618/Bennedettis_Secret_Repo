@@ -16,8 +16,8 @@ MonoBehaviour:
   - character: Antonio Benedetti
     text: "A\xFAn no has tra\xEDdo mi libro\u2026"
   - character: Antonio Benedetti
-    text: "Ese libro de contabilidad\u2026 guarda secretos que no pueden permanecer
-      ocultos. Sin \xE9l, no puedo compartir nada que te acerque a la verdad. "
+    text: "Ese libro de contabilidad\u2026 guarda secretos que deben permanecer ocultos.
+      Sin \xE9l, no puedo compartir nada que te acerque a la verdad. "
   - character: Antonio Benedetti
     text: "Ahora vete y no me molestes m\xE1s si no lo tienes"
   hasChoices: 0

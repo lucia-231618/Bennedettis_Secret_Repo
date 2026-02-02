@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - character: Valentina Benedetti
-    text: "Todav\xEDa no lo has encontrado\u2026"
+    text: "\xBFTodav\xEDa no lo has encontrado?... "
   - character: Valentina Benedetti
-    text: "Mi guardapelo\u2026 sigue perdido entre estas paredes. La \xFAltima vez
-      que lo vi fue en el despacho familiar\u2026 \xBFno lo recuerdas?"
+    text: "Creo que la \xFAltima vez que lo vi estaba en el despacho...o quiz\xE1
+      en la biblioteca...no estoy muy segura... "
   hasChoices: 0
   choices: []

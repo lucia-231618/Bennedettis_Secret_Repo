@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - character: Valentina Benedetti
-    text: "\xA1Oh\u2026 lo has encontrado! Sab\xEDa que lo conseguir\xEDas"
+    text: "\xBFLo encontraste?\u2026 Bendita seas ni\xF1a"
   - character: Valentina Benedetti
-    text: "Este guardapelo\u2026 contiene tanto de m\xED\u2026 de mi familia\u2026
-      ahora puedo descansar un poco\u2026 gracias"
+    text: "Este guardapelo contiene tanto de m\xED de mi familia ahora puedo descansar
+      un poco, gracias"
   - character: Valentina Benedetti
-    text: "Pero no es solo un objeto\u2026 hay cosas que debes saber si quieres entender
-      la verdad sobre Adriana."
+    text: "Ahora que me has ayudado, hay cosas que debes saber si quieres salir de
+      aqu\xED"
   - character: Valentina Benedetti
     text: "El d\xEDa que se cometi\xF3 el crimen estuve todo el d\xEDa  fuera de
-      la casa con mi hija\u2026 y aunque mi hija y Adriana nunca se llevaron bien
-      no la eduqu\xE9 para ser un monstruo"
+      la casa con mi hija\u2026 y aunque mi hija y Adriana nunca se llevaron bien,
+      no la eduqu\xE9 para que fuera un monstruo"
   hasChoices: 0
   choices: []

@@ -14,21 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - character: Valentina Benedetti
-    text: "Ah\u2026 un visitante\u2026 hac\xEDa tanto que nadie ven\xEDa por aqu\xED\u2026"
+    text: "Ah...un visitante...hac\xEDa tanto tiempo que nadie ven\xEDa por aqu\xED"
   - character: Valentina Benedetti
-    text: "Ya veo que te han retenido en contra de tu voluntad... as\xED de juguetona
-      ha sido mi sobrina siempre"
+    text: "Pobrecita, ya veo que Adriana volvi\xF3 a las andadas. Mi sobrina siempre
+      fue muy juguetona... "
   - character: Valentina Benedetti
-    text: "En fin, mi coraz\xF3n no encuentra paz. Algo muy querido\u2026 un guardapelo\u2026
-      se perdi\xF3 anta\xF1o"
+    text: "En fin, ya que est\xE1s aqu\xED podr\xEDas ayudarme a encontrar algo"
   - character: Valentina Benedetti
-    text: "Si pudiera recuperarlo, tal vez finalmente podr\xEDa descansar. La \xFAltima
-      vez que recuerdo haberlo visto\u2026 fue en el despacho familiar. Pero desde
-      entonces\u2026 desapareci\xF3 entre estas paredes. "
+    text: "Hace a\xF1os perd\xED mi querido guardapelos, si pudieras encontrarlo
+      quiz\xE1 por fin pueda descansas despu\xE9s de tantas d\xE9cadas"
   - character: Valentina Benedetti
-    text: "Por favor\u2026 busca mi guardapelo. Cuando lo tengas, vuelve a m\xED\u2026
-      y te contar\xE9 lo que s\xE9 sobre esta casa\u2026 y sobre Adriana."
-  - character: 
-    text: "\u2026 parece tan melanc\xF3lica que hasta me da pena "
+    text: "Por favor, encuentra mi tesoro y tr\xE1emelo. Si me ayudas tal vez pueda
+      darte alguna peque\xF1a pista para salir de aqu\xED. "
   hasChoices: 0
   choices: []

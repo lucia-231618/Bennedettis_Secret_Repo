@@ -16,7 +16,8 @@ MonoBehaviour:
   - character: Antonio Benedetti
     text: "En serio?... Eres m\xE1s tonta de lo que pensaba..."
   - character: Antonio Benedetti
-    text: En fin, quien cuida cada fuego y cada aroma, solo sabe dar sustento, nunca
-      dolor.
+    text: "Espero no tener que repetirlo m\xE1s veces"
+  - character: Antonio Benedetti
+    text: Quien cuida cada fuego y cada aroma, solo sabe dar sustento, nunca dolor.
   hasChoices: 0
   choices: []

@@ -16,9 +16,9 @@ MonoBehaviour:
   - character: Donatello Benedetti
     text: "Ah\u2026 finalmente lo has tra\xEDdo"
   - character: Donatello Benedetti
-    text: "Ah\u2026 finalmente lo has tra\xEDdo"
+    text: "Con esto puedo decirte algo que te acercar\xE1 al misterio de mi nieta"
   - character: Donatello Benedetti
     text: "Yo siempre contaba las horas con \xE9l\u2026 quien cuida el tiempo y cumple
-      su deber rara vez olvida la lealtad; su deber lo mantiene lejos del veneno."
+      su deber, rara vez olvida la lealtad; su deber lo mantiene lejos del veneno."
   hasChoices: 0
   choices: []

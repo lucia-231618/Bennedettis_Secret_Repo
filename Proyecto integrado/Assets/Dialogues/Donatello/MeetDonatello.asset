@@ -16,15 +16,17 @@ MonoBehaviour:
   - character: Donatello Benedetti
     text: "Ah\u2026 te estaba esperando\u2026"
   - character: Donatello Benedetti
-    text: "No todos los vivos pueden percibir lo que yace en esta mansi\xF3n\u2026
+    text: "No todos los vivos pueden percibir lo que se esconde entre estas paredes\u2026
       pero t\xFA\u2026 pareces diferente."
   - character: Donatello Benedetti
-    text: "Si quieres descubrir la verdad sobre mi nieta Adriana, debes escuchar
-      a quienes quedaron atrapados aqu\xED y recuperar lo que era valioso para ellos."
+    text: "Si quieres descubrir la verdad sobre mi nieta, debes escuchar a quienes
+      quedaron atrapados aqu\xED y recuperar lo que era valioso para ellos."
   - character: Donatello Benedetti
     text: "Yo te ayudar\xE9 si me encuentras el reloj de bolsillo de mi t\xE1tara-t\xE1tara-t\xE1tara-t\xE1tara-t\xE1tara-t\xE1tara"
   - character: 
-    text: "\u2026 \xA1YA ME QUED\xD3 CLARO!"
+    text: "\xA1YA ME QUED\xD3 CLARO!"
+  - character: Donatello Benedetti
+    text: ...
   - character: Donatello Benedetti
     text: "t\xE1tara-t\xE1tara abuelo "
   hasChoices: 0

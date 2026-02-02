@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
 
     // Para controlar triggers que esperan tecla E
     private ConditionalDialogue currentTriggerDialogue = null;
-    private bool playerInTrigger = false;
+    private bool playerInTrigger = false; 
 
     private void Awake() 
     {
@@ -31,8 +31,20 @@ public class DialogueManager : MonoBehaviour
         // Avanza líneas si el diálogo está activo y se pulsa espacio
         if (isDialogueActive && Input.GetKeyDown(KeyCode.Space))
         {
-            NextLine();
+            if (dialoguePanel.TypingCoroutineRunning) // si todavía se está escribiendo
+            {
+                dialoguePanel.SkipTyping(); // mostrar texto completo
+            }
+            else
+            {
+                NextLine(); // avanzar a la siguiente línea
+            }
         }
+    }
+
+    public bool IsDialogueActive()
+    {
+        return isDialogueActive;
     }
 
     // Este método lo llamará el trigger cuando el jugador esté en contacto

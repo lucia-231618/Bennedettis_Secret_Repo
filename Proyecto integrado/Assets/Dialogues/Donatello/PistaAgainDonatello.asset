@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - character: Donatello Benedetti
-    text: 'Recuerda esto: quien cuida el tiempo y cumple su deber rara vez olvida
-      la lealtad; su deber lo mantiene lejos del veneno.'
+    text: No lo olvides jovencita
+  - character: Donatello Benedetti
+    text: Quien cuida el tiempo y cumple su deber rara vez olvida la lealtad; su
+      deber lo mantiene lejos del veneno.
   hasChoices: 0
   choices: []

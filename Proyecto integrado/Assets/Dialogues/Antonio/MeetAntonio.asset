@@ -16,18 +16,19 @@ MonoBehaviour:
   - character: Antonio Benedetti
     text: "\xBFQui\xE9n osa perturbar esta casa\u2026 y mis recuerdos?"
   - character: Antonio Benedetti
-    text: "Tanto tiempo he esperado\u2026 y ahora apareces t\xFA. No temo a los vivos,
-      pero debo asegurarme de que mereces saber la verdad."
+    text: "Tanto tiempo he esperado\u2026 y ahora apareces t\xFA a meter las narices
+      donde no te llaman"
   - character: Antonio Benedetti
-    text: "Mi libro de contabilidad\u2026 mi \xFAnica posesi\xF3n de valor\u2026
-      se lo qued\xF3 mi hermano. Solo con el puedo completar lo que qued\xF3 inconcluso"
+    text: "Mi libro de contabilidad, mi \xFAnica posesi\xF3n de valor\u2026 se lo
+      qued\xF3 mi hermano. Solo con el puedo estar asegurarme de que todos los secretos
+      de la familia est\xE1n a buen recaudo conmigo"
   - character: Antonio Benedetti
-    text: "Si lo encuentras y me lo devuelves\u2026 te dar\xE9 una pista sobre los
-      secretos de esta mansi\xF3n\u2026 y sobre la muerte de mi hija"
+    text: "Si lo encuentras y me lo devuelves, te dar\xE9 una pista sobre los secretos
+      de esta mansi\xF3n que te ayudar\xE1n a resolver el asesinato "
   - character: Antonio Benedetti
     text: "No te equivoques: esto no es un juego. Cada objeto que recuperes es un
       paso hacia la verdad\u2026 o hacia tu perdici\xF3n"
   - character: 
-    text: "\u2026 ya entiendo de donde saca esa ni\xF1a fantasmal su lado oscuro "
+    text: "\u2026 ya entiendo de donde saca esa ni\xF1a fantasmal su mal genio "
   hasChoices: 0
   choices: []

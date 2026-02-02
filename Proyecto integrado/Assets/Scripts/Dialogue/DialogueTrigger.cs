@@ -58,21 +58,22 @@ public class DialogueTrigger : MonoBehaviour
                 }
             }
 
-            //Solo si todas las condiciones se cumplen, canTrigger permanece true.
-
+            // Solo si todas las condiciones se cumplen, avisamos al DialogueManager -- No llama al diálogo desde trigger 
             if (canTrigger)
             {
-                Debug.Log($"[DialogueTrigger] - Disparando diálogo: '{cond.dialogue.name}'");
-                DialogueManager.Instance.StartDialogue(cond.dialogue);
+                Debug.Log($"[DialogueTrigger] → Jugador entró en trigger para diálogo '{cond.dialogue.name}'. Pulsar E para iniciar.");
+
+                // Solo avisamos al DialogueManager
+                DialogueManager.Instance.SetCurrentTriggerDialogue(cond);
 
                 if (!cond.canRepeat)
-                    triggered = true; // Bloquea solo los diálogos que NO se repiten
+                    triggered = true;
 
-                return; // Disparó un diálogo, salimos del bucle
+                return; // Salimos del bucle, solo un diálogo activo a la vez
             }
             else
             {
-                Debug.Log($"[DialogueTrigger] - No se puede disparar el diálogo '{cond.dialogue.name}' porque NO se cumplen todas las condiciones.");
+                Debug.Log($"[DialogueTrigger] → No se puede disparar el diálogo '{cond.dialogue.name}' porque NO se cumplen todas las condiciones.");
             }
         }
     }

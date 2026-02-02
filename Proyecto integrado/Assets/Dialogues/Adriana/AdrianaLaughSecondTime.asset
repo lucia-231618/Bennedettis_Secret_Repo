@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - character: 
-    text: "\u2026\xBFEn serio?\xBFOtra vez esa risa? Estoy empezando a dejar de darle
-      importancia "
+    text: "\xBFEn serio? Esa risa est\xE1 empezando a molestarme..."
   hasChoices: 0
   choices: []

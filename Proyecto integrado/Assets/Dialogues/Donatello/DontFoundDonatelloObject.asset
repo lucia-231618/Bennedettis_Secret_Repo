@@ -16,8 +16,10 @@ MonoBehaviour:
   - character: Donatello Benedetti
     text: "Todav\xEDa no has recuperado lo que necesito\u2026"
   - character: Donatello Benedetti
-    text: 
+    text: "Sin reloj, no puedo guiarte m\xE1s hacia la verdad."
   - character: Donatello Benedetti
-    text: "Vuelve cuando lo tengas\u2026 no hay nada m\xE1s que pueda decirte ahora."
+    text: Vuelve cuando lo tengas
+  - character: Donatello Benedetti
+    text: "No hay nada m\xE1s que pueda decirte ahora."
   hasChoices: 0
   choices: []
