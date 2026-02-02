@@ -17,8 +17,7 @@ public class DialogueTrigger : MonoBehaviour
     private bool triggered = false;
     //Lista de todos los diálogos que puede disparar este trigger. Evita tb q se active varias veces
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
 
@@ -27,14 +26,19 @@ public class DialogueTrigger : MonoBehaviour
             // Si ya se disparó y no se puede repetir, lo saltamos
             if (triggered && !cond.canRepeat)
                 continue;
+            Debug.Log("Si ya se disparó y no se puede repetir, lo saltamos");
 
             bool canTrigger = true;
 
             if (cond.requiresItem && !Inventory.Instance.HasItem(cond.itemName))
                 canTrigger = false; //Objeto requerido: el jugador no tiene el objeto, canTrigger se pone en false.
 
+            Debug.Log("Objeto requerido");
+
             if (cond.requiresState && !GameManager.Instance.CheckState(cond.stateName))
                 canTrigger = false; //Estado requerido: el estado no está activo, canTrigger se pone en false.
+
+            Debug.Log("Estado requerido");
 
             //Solo si todas las condiciones se cumplen, canTrigger permanece true.
 
@@ -43,9 +47,11 @@ public class DialogueTrigger : MonoBehaviour
                 DialogueManager.Instance.StartDialogue(cond.dialogue);
 
                 if (!cond.canRepeat)
-                    triggered = true; // bloquea solo los diálogos que NO se repiten
+                    triggered = true; // Bloquea solo los diálogos que NO se repiten
 
-                return; // disparó un diálogo, salimos del bucle
+                Debug.Log("Dispara un diálogo");
+
+                return; // Disparó un diálogo, salimos del bucle
             }
         }
     }

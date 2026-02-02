@@ -38,7 +38,7 @@ public class CharacterController : MonoBehaviour
             (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed ? 1 : 0);
 
         playerRb.linearVelocity = new Vector2(horizontalInput * speed, playerRb.linearVelocity.y);
-        anim.SetBool("isWalking", horizontalInput != 0);
+        //anim.SetBool("isWalking", horizontalInput != 0);
     }
 
     void Flip()
