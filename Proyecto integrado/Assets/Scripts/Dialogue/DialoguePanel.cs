@@ -6,6 +6,7 @@ public class DialoguePanel : MonoBehaviour
 {
     [Header("Panel y Texto")]
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private TextMeshProUGUI characterText;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Header("Opciones")]
@@ -19,12 +20,15 @@ public class DialoguePanel : MonoBehaviour
         choicesContainer.SetActive(false);
     }
 
-    public void ShowDialogue(string character, string text) //Mostrar la línea actual
+    public void ShowDialogue(string character, string text)
     {
         dialoguePanel.SetActive(true);
-        choicesContainer.SetActive(false); // Ocultar elecciones mientras se muestran líneas
-        dialogueText.text = $"{character}: {text}";
+        choicesContainer.SetActive(false);
+
+        if (characterText != null) characterText.text = character;
+        if (dialogueText != null) dialogueText.text = text;
     }
+
 
     // Mostrar botones de elección
     public void ShowChoices(DialogueChoice[] choices)

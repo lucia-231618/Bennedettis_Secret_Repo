@@ -1,21 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class ConditionalDialogue
 {
     public Dialogue dialogue;           // ScriptableObject del bloque
-    public bool requiresItem = false;   //Condici�n: Necesita objeto
+    public bool requiresItem = false;   //Condición: Necesita objeto
     public string itemName;             // Nombre del objeto que debe tener
-    public bool requiresState = false;  // Condici�n: si depende de estado del juego 
+    public bool requiresState = false;  // Condición: si depende de estado del juego 
     public string stateName;            // Nombre del estado que necesita 
-    public bool canRepeat = false;      // Posibilidad de repetir di�logo
+    public bool canRepeat = false;      // Posibilidad de repetir diálogo
 }
 
 public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] private ConditionalDialogue[] dialogues;
     private bool triggered = false;
-    //Lista de todos los di�logos que puede disparar este trigger. Evita tb q se active varias veces
+    //Lista de todos los diálogos que puede disparar este trigger. Evita tb q se active varias veces
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,36 +23,64 @@ public class DialogueTrigger : MonoBehaviour
 
         foreach (var cond in dialogues)
         {
-            // Si ya se dispar� y no se puede repetir, lo saltamos
+            // Si ya se disparó y no se puede repetir, lo saltamos
             if (triggered && !cond.canRepeat)
+            {
+                Debug.Log($"[DialogueTrigger] → El diálogo '{cond.dialogue.name}' ya se mostró y no puede repetirse. Se ignora.");
                 continue;
-            Debug.Log("Si ya se dispar� y no se puede repetir, lo saltamos");
+            }
 
             bool canTrigger = true;
 
-            if (cond.requiresItem && !Inventory.Instance.HasItem(cond.itemName))
-                canTrigger = false; //Objeto requerido: el jugador no tiene el objeto, canTrigger se pone en false.
+            if (cond.requiresItem) //Revisa si requiere objeto
+            {
+                if (!Inventory.Instance.HasItem(cond.itemName))
+                {
+                    canTrigger = false;
+                    Debug.Log($"[DialogueTrigger] → El diálogo '{cond.dialogue.name}' requiere el objeto '{cond.itemName}', pero el jugador NO lo tiene.");
+                }
+                else
+                {
+                    Debug.Log($"[DialogueTrigger] → El jugador tiene el objeto requerido '{cond.itemName}' para el diálogo '{cond.dialogue.name}'.");
+                }
+            }
 
-            Debug.Log("Objeto requerido");
-
-            if (cond.requiresState && !GameManager.Instance.CheckState(cond.stateName))
-                canTrigger = false; //Estado requerido: el estado no est� activo, canTrigger se pone en false.
-
-            Debug.Log("Estado requerido");
+            if (cond.requiresState) //Revisa si requiere estado
+            {
+                if (!GameManager.Instance.CheckState(cond.stateName))
+                {
+                    canTrigger = false;
+                    Debug.Log($"[DialogueTrigger] → El diálogo '{cond.dialogue.name}' requiere el estado '{cond.stateName}', que NO está activo.");
+                }
+                else
+                {
+                    Debug.Log($"[DialogueTrigger] → El estado requerido '{cond.stateName}' está activo para el diálogo '{cond.dialogue.name}'.");
+                }
+            }
 
             //Solo si todas las condiciones se cumplen, canTrigger permanece true.
 
             if (canTrigger)
             {
+                Debug.Log($"[DialogueTrigger] - Disparando diálogo: '{cond.dialogue.name}'");
                 DialogueManager.Instance.StartDialogue(cond.dialogue);
 
                 if (!cond.canRepeat)
-                    triggered = true; // Bloquea solo los di�logos que NO se repiten
+                    triggered = true; // Bloquea solo los diálogos que NO se repiten
 
-                Debug.Log("Dispara un di�logo");
-
-                return; // Dispar� un di�logo, salimos del bucle
+                return; // Disparó un diálogo, salimos del bucle
+            }
+            else
+            {
+                Debug.Log($"[DialogueTrigger] - No se puede disparar el diálogo '{cond.dialogue.name}' porque NO se cumplen todas las condiciones.");
             }
         }
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+        DialogueManager.Instance.PlayerLeftTrigger();
+    }
 }
+
