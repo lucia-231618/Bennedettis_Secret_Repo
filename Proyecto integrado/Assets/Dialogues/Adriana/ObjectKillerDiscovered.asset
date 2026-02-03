@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - character: Adriana Benedetti
-    text: "\u2026Imposible\u2026 alguien finalmente lo descubri\xF3."
+    text: "\xA1Imposible! Alguien finalmente lo descubri\xF3 todo."
   - character: Adriana Benedetti
-    text: "Has sido cuidadoso, atento y valiente\u2026 incluso entre los fantasmas
-      y sus secretos."
+    text: 'Gracias por ayudarme. '
   - character: Adriana Benedetti
-    text: "Ahora\u2026 puedo descansar. Y t\xFA\u2026 puedes salir de la mansi\xF3n."
+    text: "Ahora podr\xE9 descansar en paz y ver de nuevo a mi familia "
   hasChoices: 0
   choices: []

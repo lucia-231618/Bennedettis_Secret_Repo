@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: AllMisionsCompleted
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
-  - character: Adriana
-    text: "\xA1Es la hora de la verdad! Veremos si has estado atenta con las pistas\u2026
-      \xBFQui\xE9n me mat\xF3? "
+  - character: Adriana Benedetti
+    text: "\xA1Es hora de la verdad! Veremos si eres tan inteligente como cuando
+      resolviste el primer problema o solo fue suerte. "
+  - character: Adriana Benedetti
+    text: "\xBFQui\xE9n me mat\xF3?"
   hasChoices: 1
   choices:
   - choiceText: "El t\xEDo"

@@ -14,27 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - character: Adriana Benedetti
-    text: "Ah\u2026 finalmente\u2026 la encontraste."
+    text: "\xA1Mi caja de m\xFAsica!"
   - character: Adriana Benedetti
-    text: "Mi caja de m\xFAsica\u2026 \xBFla ten\xEDas en tus manos y no sab\xEDas
-      que yo estaba observando?"
+    text: "No te mentir\xE9, no ten\xEDa muchas esperanzas de que la encontraras,
+      pero supongo que eres m\xE1s lista de lo que aparentas. "
   - character: Adriana Benedetti
-    text: "No todos tienen la paciencia de los vivos\u2026 pero t\xFA\u2026 pareces
-      diferente. "
+    text: "Sigue as\xED y descubres la verdad quiz\xE1 puedas llegar a salir de aqu\xED. "
   - character: Adriana Benedetti
-    text: "Escucha con atenci\xF3n\u2026 cada objeto que encontraste, cada pista\u2026
-      todo lleva a la verdad que nadie quiere recordar."
-  - character: Adriana Benedetti
-    text: "La \xFAnica pista que yo te voy a dar es que mientras yo siempre tocaba
-      la m\xFAsica, ella siempre me sonre\xEDa\u2026 nadie que r\xEDe conmigo pondr\xEDa
-      hacerme cosas feas "
-  - character: Adriana Benedetti
-    text: Jajajajajajajajajaja
-  - character: Adriana Benedetti
-    text: "Ahora todo est\xE1 m\xE1s cerca\u2026 pero tambi\xE9n m\xE1s peligroso.
-      Debes seguir, si quieres salir de aqu\xED con vida."
-  - character: Adriana Benedetti
-    text: "Ahora todo est\xE1 m\xE1s cerca\u2026 pero tambi\xE9n m\xE1s peligroso.
-      Debes seguir, si quieres salir de aqu\xED con vida."
+    text: O no
   hasChoices: 0
   choices: []

@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - character: Adriana Benedetti
-    text: "\xA1No\u2026! No has visto la verdad\u2026 ni siquiera con todas las pistas
-      frente a ti."
+    text: "\xA1No! Deb\xED haber sabido que no podr\xEDas resolverlo... "
   - character: Adriana Benedetti
-    text: "Quien se equivoca\u2026 se queda conmigo\u2026 para siempre."
+    text: "\xA1Pero no te preocupes, tendr\xE1s toda la eternidad para averiguarlo! "
   hasChoices: 0
   choices: []

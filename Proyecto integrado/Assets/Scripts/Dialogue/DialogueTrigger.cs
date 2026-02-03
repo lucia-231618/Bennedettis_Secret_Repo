@@ -34,7 +34,7 @@ public class DialogueTrigger : MonoBehaviour
 
             if (cond.requiresItem) //Revisa si requiere objeto
             {
-                if (!Inventory.Instance.HasItem(cond.itemName))
+                if (!InventoryManager.Instance.HasItem(cond.itemName))
                 {
                     canTrigger = false;
                     Debug.Log($"[DialogueTrigger] → El diálogo '{cond.dialogue.name}' requiere el objeto '{cond.itemName}', pero el jugador NO lo tiene.");

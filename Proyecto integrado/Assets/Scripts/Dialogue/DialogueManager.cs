@@ -115,6 +115,15 @@ public class DialogueManager : MonoBehaviour
     // Método para cerrar el panel del Diálogo
     public void EndDialogue()
     {
+        // Inventario
+        if (currentDialogue != null && currentDialogue.consumesItem)
+        {
+            if (InventoryManager.Instance.HasItem(currentDialogue.itemToConsume))
+            {
+                InventoryManager.Instance.ConsumeItem(currentDialogue.itemToConsume);
+            }
+        }
+
         dialoguePanel.HideDialogue();
         currentDialogue = null;
         currentLineIndex = 0;

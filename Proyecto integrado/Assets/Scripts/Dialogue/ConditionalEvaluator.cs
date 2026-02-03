@@ -16,7 +16,7 @@ public class ConditionalEvaluator : MonoBehaviour
     public bool CanTrigger(ConditionalDialogue cond) //Devuelve true o false según si se cumplen todas las condiciones 
     {
         // Evalúa objeto requerido
-        if (cond.requiresItem && !Inventory.Instance.HasItem(cond.itemName))
+        if (cond.requiresItem && !InventoryManager.Instance.HasItem(cond.itemName))
             return false;
 
         // Evalúa estado global

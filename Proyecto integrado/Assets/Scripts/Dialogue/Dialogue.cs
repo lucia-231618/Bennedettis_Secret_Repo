@@ -4,9 +4,16 @@ using UnityEngine;
 public class Dialogue : ScriptableObject
 {
 
+    [Header("Dialogue Content")]
     public DialogueLine[] lines;
+
+    [Header("Choices")]
     public bool hasChoices = false;
     public DialogueChoice[] choices;
+
+    [Header("Inventory Effect")]
+    public bool consumesItem = false;    //Marca si un diálogo debe eliminar algo del inventario
+    public string itemToConsume;        //Nombre exacto del Item que tiene que eliminar
 }
 
 [System.Serializable]

@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: KillerDiscovered
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
-  - character: Adriana
-    text: "Supongo que eres m\xE1s lista de lo que pensaba pero\u2026 \xBFComo me
-      mat\xF3? "
+  - character: 'Adriana Benedetti '
+    text: "No me lo puedo creer...de verdad lo averiguaste\u2026 "
+  - character: 'Adriana Benedetti '
+    text: "Nunca pens\xE9 que \xE9l podr\xEDa llegar a hacerme algo as\xED "
+  - character: 'Adriana Benedetti '
+    text: "\xBFCon qu\xE9 me mato mi t\xEDo?"
   hasChoices: 1
   choices:
   - choiceText: Cuchillo
