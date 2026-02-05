@@ -7,7 +7,6 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D playerRb;
     private Animator anim;
     private float horizontalInput;
-    private SpriteRenderer spriteRenderer;
 
     //Variables de estadística del player
     public float speed;
@@ -18,7 +17,6 @@ public class CharacterController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -43,18 +41,23 @@ public class CharacterController : MonoBehaviour
             (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed ? 1 : 0);
 
         playerRb.linearVelocity = new Vector2(horizontalInput * speed, playerRb.linearVelocity.y);
-        //anim.SetBool("isWalking", horizontalInput != 0);
+        anim.SetBool("Walking", horizontalInput != 0);
+        Debug.Log(horizontalInput);
     }
 
     void Flip()
     {
-        if (horizontalInput > 0) 
+        Vector3 scale = transform.localScale; //coge la escala actual del player
+
+        if (horizontalInput > 0)  // si me muevo a la derecha, escala positiva 
         {
-            spriteRenderer.flipX = false; 
+            scale.x = Mathf.Abs(scale.x); 
         }
-        else if (horizontalInput < 0) 
+        else if (horizontalInput < 0)
         {
-            spriteRenderer.flipX = true; 
+            scale.x = -Mathf.Abs(scale.x); // si me muevo a la izquierda, escala negativa 
         }
+
+        transform.localScale = scale;
     }
 }
