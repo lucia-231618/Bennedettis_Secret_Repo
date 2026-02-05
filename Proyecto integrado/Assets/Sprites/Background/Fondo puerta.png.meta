@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: af33b5d582e1ea645b37ced14f10de7f
+guid: d89cbf24940a45d44b5ace30ff1c5ed0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6728841714160019208
-    second: Fondo pared_0
+      213: -8760578542033339684
+    second: Fondo puerta_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fondo pared_0
+      name: Fondo puerta_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 320
-        height: 960
+        width: 640
+        height: 961
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8f859a5ac1a5e92a0800000000000000
-      internalID: -6728841714160019208
+      spriteID: cda71374b3c2c6680800000000000000
+      internalID: -8760578542033339684
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fondo pared_0: -6728841714160019208
+      Fondo puerta_0: -8760578542033339684
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
