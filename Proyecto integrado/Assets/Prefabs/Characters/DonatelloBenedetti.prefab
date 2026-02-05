@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5646352087648655281}
   - component: {fileID: 8339273237718479273}
   - component: {fileID: 1986278943636834864}
+  - component: {fileID: 6772055157182228802}
+  - component: {fileID: 8110849563590091553}
   m_Layer: 0
   m_Name: DonatelloBenedetti
   m_TagString: Ghost
@@ -26,10 +28,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865887949444362716}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -57.88, y: -0.8, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -7071496036792002254, guid: 1d90133fe847ab24285aa2204506efbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -113,3 +115,86 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6772055157182228802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865887949444362716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29f8574e27aa4141a808f7d7cee3b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  dialogues:
+  - dialogue: {fileID: 11400000, guid: b8976f609069dcc4fb69108b07abd13a, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 0
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: 51b32307932b562489c74e980cf13f73, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 0
+    stateName: 
+    canRepeat: 1
+  - dialogue: {fileID: 11400000, guid: 2faa9c782f6bf344eb75efad34e42a80, type: 2}
+    requiresItem: 1
+    itemName: 
+    requiresState: 0
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: 7f2ae9a8164cdc1459c50b8dc115dee1, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 0
+    stateName: 
+    canRepeat: 1
+--- !u!61 &8110849563590091553
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865887949444362716}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: ae2d2249721a8244f8cd4bea04773111, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.13, y: 7.16}
+    newSize: {x: 5.13, y: 7.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 5.13, y: 7.16}
+  m_EdgeRadius: 0
