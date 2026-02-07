@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
 
+    //Variables de triggers
+    private bool hitWall = false;
+    private bool wallOnLeft = false;
+    private bool wallOnRight = false;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,9 +47,18 @@ public class PlayerController : MonoBehaviour
             (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed ? -1 : 0) +
             (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed ? 1 : 0);
 
+        // Si hemos tocado pared, no dejamos que siga caminando hacia ella
+        if (hitWall && horizontalInput != 0)
+        {
+            if ((horizontalInput > 0 && wallOnRight) || (horizontalInput < 0 && wallOnLeft))
+            {
+                horizontalInput = 0;
+            }
+        }
+
+
         playerRb.linearVelocity = new Vector2(horizontalInput * speed, playerRb.linearVelocity.y);
         anim.SetBool("Walking", horizontalInput != 0);
-        Debug.Log(horizontalInput);
     }
 
     void Flip()
@@ -59,5 +75,33 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.localScale = scale;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Wall"))
+        {
+            // Detectar si la pared está a la derecha o izquierda del jugador
+            if (collision.transform.position.x > transform.position.x)
+                wallOnRight = true;
+            else
+                wallOnLeft = true;
+
+            hitWall = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Wall"))
+        {
+            if (collision.transform.position.x > transform.position.x)
+                wallOnRight = false;
+            else
+                wallOnLeft = false;
+
+            if (!wallOnLeft && !wallOnRight)
+                hitWall = false;
+        }
     }
 }
