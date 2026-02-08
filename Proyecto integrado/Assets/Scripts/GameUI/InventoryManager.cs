@@ -1,9 +1,12 @@
+using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
+
+    [SerializeField] private ItemData[] allItems; // Lista de todos los objetos con nombre y sprite
 
     // Lista de nombres de objetos que tiene el jugador
     private List<string> items = new List<string>();
@@ -21,6 +24,23 @@ public class InventoryManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    [System.Serializable]
+    public class ItemData
+    {
+        public string itemName;
+        public Sprite itemSprite;
+    }
+
+    // Devuelve el sprite de un item por nombre
+    public Sprite GetItemSprite(string itemName)
+    {
+        foreach (ItemData item in allItems)
+        {
+            if (item.itemName == itemName)
+                return item.itemSprite;
+        }
+        return null; // Si no encuentra el item
+    }
 
     /// Comprueba si el jugador tiene un objeto con ese nombre
     public bool HasItem(string itemName)

@@ -10,7 +10,8 @@ public class CollectableItem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             InventoryManager.Instance.AddItem(itemName);   // Añade automáticamente al inventario
-            Destroy(gameObject);                    // Desaparece del mundo
+            Debug.Log("Added item: " + itemName);
+            Destroy(gameObject);                           // Desaparece del mundo
         }
     }
 }

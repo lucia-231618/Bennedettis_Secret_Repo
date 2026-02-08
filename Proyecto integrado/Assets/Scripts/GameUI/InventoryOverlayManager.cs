@@ -3,13 +3,30 @@ using UnityEngine.SceneManagement;
 
 public class InventoryOverlayManager : MonoBehaviour
 {
+
+    public static InventoryOverlayManager Instance;
+
     private bool isInventoryOpen = false;                   //Controla si el inventario está abierto o cerradp
-    private string inventorySceneName = "INVENTORY";   //Nombre exacto de la escena
+    private string inventorySceneName = "INVENTORY";        //Nombre exacto de la escena
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))   //Detecta el botón I
         {
+            Debug.Log("I pressed");
             if (isInventoryOpen)
             {
                 CloseInventory();         // Si inventario está abierto cierra el inventario al apretar la tecla
@@ -23,15 +40,22 @@ public class InventoryOverlayManager : MonoBehaviour
 
     private void OpenInventory()
     {
-        SceneManager.LoadSceneAsync(inventorySceneName, LoadSceneMode.Additive);  //Abre el inventario sin cerrar la escena actual
-        isInventoryOpen = true;                                                   
-        Time.timeScale = 0f;                                                     // pausa el juego (Movimientos y físicas)
+        // Evita cargar otra vez si ya está cargada
+        if (!SceneManager.GetSceneByName(inventorySceneName).isLoaded)
+        {
+            SceneManager.LoadSceneAsync(inventorySceneName, LoadSceneMode.Additive);
+            isInventoryOpen = true;
+            Time.timeScale = 0f; // pausa el juego (Movimientos y físicas)
+        }                                                 
     }
 
     private void CloseInventory()
     {
-        SceneManager.UnloadSceneAsync(inventorySceneName);                       //Cierra el inventario sin tocar la escena actual
-        isInventoryOpen = false;
-        Time.timeScale = 1f;                                                     // reanuda el juego
+        if (SceneManager.GetSceneByName(inventorySceneName).isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(inventorySceneName);
+            isInventoryOpen = false;
+            Time.timeScale = 1f; // reanuda el juego
+        }                                                  // reanuda el juego
     }
 }

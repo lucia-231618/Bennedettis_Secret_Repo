@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -8,25 +9,49 @@ public class InventoryUI : MonoBehaviour
 
     private void OnEnable()
     {
-        RefreshUI();
+        RefreshUI();        //Asegura de refrescar la Ui cuando cargue en la escena
     }
 
     public void RefreshUI()
     {
-        // Limpiar slots anteriores
-        foreach (Transform child in slotsParent)
-        {
-            Destroy(child.gameObject);
-        }
+        Debug.Log("Refreshing Inventory UI");
 
-        // Añadir slots nuevos para cada objeto del inventario
+        if (slotPrefab == null) { Debug.LogError("slotPrefab is null!"); return; }
+        if (slotsParent == null) { Debug.LogError("slotsParent is null!"); return; }
+
+        foreach (Transform child in slotsParent)
+            Destroy(child.gameObject);
+
         foreach (string itemName in InventoryManager.Instance.GetAllItems())
         {
             GameObject slot = Instantiate(slotPrefab, slotsParent);
-            slot.GetComponentInChildren<Text>().text = itemName;
 
-            // Opcional: si tienes un icono asignado, puedes usarlo
-            // slot.GetComponentInChildren<Image>().sprite = itemIcon;
+            // Asignar nombre
+            TextMeshProUGUI textComponent = slot.GetComponentInChildren<TextMeshProUGUI>();
+            if (textComponent != null)
+                textComponent.text = itemName;
+            else
+                Debug.LogWarning("Prefab missing TextMeshProUGUI component!");
+
+            // Asignar sprite
+            Image iconImage = slot.GetComponentInChildren<Image>();
+            if (iconImage != null)
+            {
+                Sprite sprite = InventoryManager.Instance.GetItemSprite(itemName);
+                if (sprite != null)
+                {
+                    iconImage.sprite = sprite;
+                    iconImage.preserveAspect = true; // Mantener proporción del sprite
+                }
+                else
+                {
+                    Debug.LogWarning($"No sprite found for item '{itemName}' in InventoryManager.allItems");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Prefab missing Image component!");
+            }
         }
     }
 }
