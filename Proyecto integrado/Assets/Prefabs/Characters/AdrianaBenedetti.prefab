@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5460310104766144561}
   - component: {fileID: 5029868920109907308}
   - component: {fileID: 7639916242202210112}
+  - component: {fileID: -7546652094667982965}
+  - component: {fileID: -8033472879284546555}
   m_Layer: 0
   m_Name: AdrianaBenedetti
   m_TagString: Untagged
@@ -113,3 +115,122 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &-7546652094667982965
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6373835521549749809}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: ae2d2249721a8244f8cd4bea04773111, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 6.17}
+    newSize: {x: 4, y: 6.17}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 6.17}
+  m_EdgeRadius: 0
+--- !u!114 &-8033472879284546555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6373835521549749809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29f8574e27aa4141a808f7d7cee3b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  dialogues:
+  - dialogue: {fileID: 11400000, guid: 273cb1f4441c95243b909c6c14d2bcba, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 1
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: 12eb863b506480343b719a217a49a536, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 1
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: efca73a7eafcbcc4ba0f1d5df3198a7c, type: 2}
+    requiresItem: 1
+    itemName: 
+    requiresState: 0
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: 61479e40766c2954f9ec076823443a48, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 0
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: d45d6880a7e36a74489a70424eb488a3, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 1
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: d45d6880a7e36a74489a70424eb488a3, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 1
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: 91427a82a75929a4a93d1fa870247214, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 1
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: 91427a82a75929a4a93d1fa870247214, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 1
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: 93f9ed5bf522ac5488363e8874f82ce2, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 1
+    stateName: 
+    canRepeat: 0
+  - dialogue: {fileID: 11400000, guid: e3c0bd97f192b3349a82b60abbb45dda, type: 2}
+    requiresItem: 0
+    itemName: 
+    requiresState: 1
+    stateName: 
+    canRepeat: 0
