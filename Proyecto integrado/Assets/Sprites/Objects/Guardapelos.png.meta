@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 3208ed31fd1f5ff4d9b8ae4556418ae3
+guid: 87da4694feec73145b54ff094a49e1ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6288179971597629913
-    second: Sofa_0
-  - first:
-      213: 8811021385593452928
-    second: Sofa_1
+      213: -5350019528061716688
+    second: Guardapelos_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sofa_0
+      name: Guardapelos_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 831
-        height: 494
+        width: 942
+        height: 833
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 726823dc1a5ebb8a0800000000000000
-      internalID: -6288179971597629913
+      spriteID: 0377a78b599e0c5b0800000000000000
+      internalID: -5350019528061716688
       vertices: []
       indices: 
       edges: []
@@ -128,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 85db32ad5609dce43b035d2788c28213
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -138,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sofa_0: -6288179971597629913
-      Sofa_1: 8811021385593452928
+      Guardapelos_0: -5350019528061716688
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

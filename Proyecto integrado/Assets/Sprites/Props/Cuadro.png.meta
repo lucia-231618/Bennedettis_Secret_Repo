@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 3208ed31fd1f5ff4d9b8ae4556418ae3
+guid: ab52de227b0a4cb41906cd8aa821cbe8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6288179971597629913
-    second: Sofa_0
+      213: 9172858812532263406
+    second: Cuadro_0
   - first:
-      213: 8811021385593452928
-    second: Sofa_1
+      213: -6486760309503966716
+    second: Cuadro_1
+  - first:
+      213: -1031218442902630491
+    second: Cuadro_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sofa_0
+      name: Cuadro_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 831
-        height: 494
+        width: 546
+        height: 607
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 726823dc1a5ebb8a0800000000000000
-      internalID: -6288179971597629913
+      spriteID: ee90cc77d7a8c4f70800000000000000
+      internalID: 9172858812532263406
       vertices: []
       indices: 
       edges: []
@@ -128,7 +131,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 85db32ad5609dce43b035d2788c28213
+    spriteID: 85585741754fd884aa87d9cbf1937fdb
     internalID: 0
     vertices: []
     indices: 
@@ -138,8 +141,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sofa_0: -6288179971597629913
-      Sofa_1: 8811021385593452928
+      Cuadro_0: 9172858812532263406
+      Cuadro_1: -6486760309503966716
+      Cuadro_2: -1031218442902630491
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

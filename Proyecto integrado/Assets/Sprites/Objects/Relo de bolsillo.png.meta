@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: 3208ed31fd1f5ff4d9b8ae4556418ae3
+guid: b5ce6ef2e2fe8964a858cbc648c02da5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6288179971597629913
-    second: Sofa_0
+      213: -8634003050507931637
+    second: Relo de bolsillo_0
   - first:
-      213: 8811021385593452928
-    second: Sofa_1
+      213: -1952371557460665441
+    second: Relo de bolsillo_1
+  - first:
+      213: 1120966535216215382
+    second: Relo de bolsillo_2
+  - first:
+      213: 8835184657585879098
+    second: Relo de bolsillo_3
+  - first:
+      213: 3072967446768962070
+    second: Relo de bolsillo_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sofa_0
+      name: Relo de bolsillo_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 831
-        height: 494
+        x: 6
+        y: 14
+        width: 495
+        height: 549
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 726823dc1a5ebb8a0800000000000000
-      internalID: -6288179971597629913
+      spriteID: b00f5d078fbdd2880800000000000000
+      internalID: -8634003050507931637
       vertices: []
       indices: 
       edges: []
@@ -128,7 +137,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 85db32ad5609dce43b035d2788c28213
+    spriteID: 20a4589fe3b0c1e4f92d1c108180a37d
     internalID: 0
     vertices: []
     indices: 
@@ -138,8 +147,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sofa_0: -6288179971597629913
-      Sofa_1: 8811021385593452928
+      Relo de bolsillo_0: -8634003050507931637
+      Relo de bolsillo_1: -1952371557460665441
+      Relo de bolsillo_2: 1120966535216215382
+      Relo de bolsillo_3: 8835184657585879098
+      Relo de bolsillo_4: 3072967446768962070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
