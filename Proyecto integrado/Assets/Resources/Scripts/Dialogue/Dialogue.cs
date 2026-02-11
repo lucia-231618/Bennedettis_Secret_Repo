@@ -21,6 +21,8 @@ public class DialogueLine
 {
     public string character;
     public string text;
+    // Clip de audio opcional para esta línea (ej. risa, efecto)
+    public AudioClip sound;
 }
 
 [System.Serializable] 

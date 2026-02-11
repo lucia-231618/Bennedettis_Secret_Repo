@@ -15,12 +15,21 @@ MonoBehaviour:
   lines:
   - character: Adriana Benedetti
     text: "\xA1Mi caja de m\xFAsica!"
+    sound: {fileID: 0}
   - character: Adriana Benedetti
     text: "No te mentir\xE9, no ten\xEDa muchas esperanzas de que la encontraras,
       pero supongo que eres m\xE1s lista de lo que aparentas. "
+    sound: {fileID: 0}
   - character: Adriana Benedetti
     text: "Sigue as\xED y descubres la verdad quiz\xE1 puedas llegar a salir de aqu\xED. "
+    sound: {fileID: 0}
   - character: Adriana Benedetti
     text: O no
+    sound: {fileID: 0}
+  - character: Adriana Benedetti
+    text: JAjajajaJAJAJjjaja
+    sound: {fileID: 8300000, guid: e1c5b986ff8faab4da785852b3e6d766, type: 3}
   hasChoices: 0
   choices: []
+  consumesItem: 0
+  itemToConsume: 

@@ -17,11 +17,23 @@ public class DialogueManager : MonoBehaviour
     // Evento para notificar que un diálogo terminó
     public event Action<Dialogue> EndDialogueEvent;
 
+    // AudioSource para reproducir sonidos
+    private AudioSource audioSource;
+
     private void Awake() 
     {
         //evitamos duplicados de este script en la escena
         if (Instance == null) Instance = this; 
         else Destroy(gameObject);
+
+        // Agrega AudioSource si no existe
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+        }
     }
 
     private void Update()
@@ -82,6 +94,18 @@ public class DialogueManager : MonoBehaviour
 
         DialogueLine line = currentDialogue.lines[currentLineIndex];
         Debug.Log($"[DialogueManager] Mostrando línea {currentLineIndex}: {line.character} -> {line.text}");
+
+        // Reproduce sonido si la línea tiene uno asignado
+        if (line.sound != null)
+        {
+            audioSource.PlayOneShot(line.sound);
+            Debug.Log($"[DialogueManager] Reproduciendo sonido para línea {currentLineIndex}: {line.sound.name}");
+        }
+        else
+        {
+            Debug.Log($"[DialogueManager] No hay sonido para línea {currentLineIndex}");
+        }
+
         dialoguePanel.ShowDialogue(line.character, line.text);
     }
 
