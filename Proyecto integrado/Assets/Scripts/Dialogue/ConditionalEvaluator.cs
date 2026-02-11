@@ -19,10 +19,6 @@ public class ConditionalEvaluator : MonoBehaviour
         if (cond.requiresItem && !InventoryManager.Instance.HasItem(cond.itemName))
             return false;
 
-        // Evalúa estado global
-        if (cond.requiresState && !GameManager.Instance.CheckState(cond.stateName))
-            return false;
-
         return true; // Todas las condiciones se cumplen
     }
 }

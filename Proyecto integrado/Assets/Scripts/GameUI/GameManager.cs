@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Jugador")]
+    public Transform playerTransform; // Arrastrar el jugador en el inspector
+
+
     // Estados generales del juego (Explorando, Dialogando, EnMenu, Cinematica, etc.)
     public enum GameState { Exploring, Dialogue, Menu, Cinematic } 
     public GameState CurrentState { get; private set; } = GameState.Exploring; //Cambia el estado global del juego
@@ -18,6 +22,11 @@ public class GameManager : MonoBehaviour
         // Singleton -- Evitamos duplicados de este script en la escena
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public Transform GetPlayerTransform()
+    {
+        return playerTransform;
     }
 
     // Cambiar estado global del juego

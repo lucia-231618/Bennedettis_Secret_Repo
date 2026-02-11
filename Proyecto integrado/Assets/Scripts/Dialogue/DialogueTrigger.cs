@@ -6,8 +6,6 @@ public class ConditionalDialogue
     public Dialogue dialogue;           // ScriptableObject del bloque
     public bool requiresItem = false;   //Condición: Necesita objeto
     public string itemName;             // Nombre del objeto que debe tener
-    public bool requiresState = false;  // Condición: si depende de estado del juego 
-    public string stateName;            // Nombre del estado que necesita 
     public bool canRepeat = false;      // Posibilidad de repetir diálogo
 }
 

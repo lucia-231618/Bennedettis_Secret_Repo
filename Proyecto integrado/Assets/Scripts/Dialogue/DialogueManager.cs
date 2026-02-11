@@ -1,16 +1,21 @@
+using System;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;                 //Para que otros scripts puedan llamar a este script sin tener que arrastrar referencias
     [SerializeField] private DialoguePanel dialoguePanel;   //Llama al script de la UI 
+    
     private Dialogue currentDialogue;
     private int currentLineIndex = 0;                       //Controla qué línea del array se está mostrando
     private bool isDialogueActive = false;                  //Evita que se disparen los diálogos cuando no hay diálogos (Interruptor)
 
     // Para controlar triggers que esperan tecla E
     private ConditionalDialogue currentTriggerDialogue = null;
-    private bool playerInTrigger = false; 
+    private bool playerInTrigger = false;
+
+    // Evento para notificar que un diálogo terminó
+    public event Action<Dialogue> EndDialogueEvent;
 
     private void Awake() 
     {
@@ -128,5 +133,30 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = null;
         currentLineIndex = 0;
         isDialogueActive = false;
+
+        // Disparar evento para que Adriana pueda saber que terminó
+        EndDialogueEvent?.Invoke(currentDialogue);
+    }
+
+    public void StartConditionalDialogue(ConditionalDialogue cond, Action onDialogueEnd = null)
+    {
+        if (cond == null || cond.dialogue == null) return;
+
+        if (!ConditionalEvaluator.Instance.CanTrigger(cond))
+        return;
+
+        if (onDialogueEnd != null)
+        {
+            // Crear un wrapper compatible con Action<Dialogue>
+             Action<Dialogue> wrapper = null;
+            wrapper = (Dialogue d) =>
+            {
+                onDialogueEnd.Invoke();
+                EndDialogueEvent -= wrapper; // Desuscribimos para que solo se ejecute una vez
+            };
+            EndDialogueEvent += wrapper;
+        }
+
+    StartDialogue(cond.dialogue);
     }
 }
