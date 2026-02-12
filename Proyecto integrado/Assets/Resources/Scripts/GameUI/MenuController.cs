@@ -5,6 +5,7 @@ public class MenuController : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public float tiempoAnimacion = 5f;      // duración antes de cargar nivel
+    public GameObject PanelUI;  // arrastra tu contenedor desde el Inspector
 
     void Start()
     {
@@ -21,6 +22,8 @@ public class MenuController : MonoBehaviour
     // Botón Jugar
     public void PlayGame()
     {
+        if (PanelUI != null)
+            PanelUI.SetActive(false); // ocultamos todo el UI
 
         if (videoPlayer != null)
             videoPlayer.Play();
