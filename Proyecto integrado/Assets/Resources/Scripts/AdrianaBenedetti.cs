@@ -14,6 +14,9 @@ public class AdrianaBenedetti : MonoBehaviour
     private bool musicBoxSecuenciaIniciada = false; // Flag para evitar múltiples llamadas en la secuencia de Music Box
     private bool allMissionsSecuenciaIniciada = false; // Flag para evitar múltiples llamadas en la secuencia de todas las misiones completadas
 
+    [SerializeField] private float fadeDuration = 2f;
+    private bool primeraAparicion = true;
+
     // Método original para aparecer tras entrada a la mansión
     public void AparecerTrasEntradaMansion()
     {
@@ -87,17 +90,17 @@ public class AdrianaBenedetti : MonoBehaviour
             yield break;
         }
 
-        // pequeña pausa de seguridad
-        yield return null;
+        // Spawnea Adriana y captura la corrutina de fade (si es la primera vez)
+        Coroutine fade = SpawnNPC();
 
-        Debug.Log("AdrianaBenedetti: Spawneando Adriana.");
-        SpawnNPC();
+        // Espera a que termine el fade si existe
+        if (fade != null)
+            yield return fade;
 
-        yield return new WaitForSeconds(0.5f);
+        Debug.Log("AdrianaBenedetti: Adriana ya apareció completamente. Lanzando PuertaCerrada.");
 
         if (autoDialogos != null)
         {
-            Debug.Log("AdrianaBenedetti: Lanzando PuertaCerrada.");
             autoDialogos.LanzarDialogo("PuertaCerrada");
 
             yield return new WaitUntil(() => DialogueManager.Instance.IsDialogueActive());
@@ -197,8 +200,7 @@ public class AdrianaBenedetti : MonoBehaviour
         }
     }
 
-    // Ahora acepta posición y rotación opcionales (si no se pasan, usa spawnPointTransform)
-    private void SpawnNPC(Vector3? customPosition = null, Quaternion? customRotation = null)
+    public Coroutine SpawnNPC(Vector3? customPosition = null, Quaternion? customRotation = null)
     {
         Vector3 position = customPosition ?? (spawnPointTransform != null ? spawnPointTransform.position : Vector3.zero);
         Quaternion rotation = customRotation ?? (spawnPointTransform != null ? spawnPointTransform.rotation : Quaternion.identity);
@@ -206,7 +208,7 @@ public class AdrianaBenedetti : MonoBehaviour
         if (position == Vector3.zero && spawnPointTransform == null)
         {
             Debug.LogError("AdrianaBenedetti: Ni spawnPointTransform asignado ni posición personalizada proporcionada.");
-            return;
+            return null;
         }
 
         if (npcInstance == null)
@@ -214,10 +216,19 @@ public class AdrianaBenedetti : MonoBehaviour
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
             if (prefab == null)
             {
-                Debug.LogError($"AdrianaBenedetti: No se encontró el prefab en Resources/{prefabPath}. Verifica la ruta y el nombre.");
-                return;
+                Debug.LogError($"AdrianaBenedetti: No se encontró el prefab en Resources/{prefabPath}.");
+                return null;
             }
+
             npcInstance = Instantiate(prefab, position, rotation);
+
+            if (primeraAparicion)
+            {
+                primeraAparicion = false;
+                // Devuelve la corrutina para que se pueda esperar en SecuenciaAdriana
+                return StartCoroutine(FadeInNPC());
+            }
+
             Debug.Log("AdrianaBenedetti: Adriana spawneada exitosamente.");
         }
         else
@@ -226,6 +237,40 @@ public class AdrianaBenedetti : MonoBehaviour
             npcInstance.transform.rotation = rotation;
             npcInstance.SetActive(true);
             Debug.Log("AdrianaBenedetti: Adriana reposicionada y activada.");
+        }
+
+        return null;
+    }
+
+    private IEnumerator FadeInNPC()
+    {
+        if (npcInstance == null) yield break;
+
+        SpriteRenderer[] renderers = npcInstance.GetComponentsInChildren<SpriteRenderer>();
+
+        float t = 0f;
+
+        // poner invisible
+        foreach (var r in renderers)
+        {
+            Color c = r.color;
+            c.a = 0f;
+            r.color = c;
+        }
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            float alpha = Mathf.Clamp01(t / fadeDuration);
+
+            foreach (var r in renderers)
+            {
+                Color c = r.color;
+                c.a = alpha;
+                r.color = c;
+            }
+
+            yield return null;
         }
     }
 
