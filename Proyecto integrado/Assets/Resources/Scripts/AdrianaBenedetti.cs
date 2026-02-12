@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class AdrianaBenedetti : MonoBehaviour
 {
-    [SerializeField] private string prefabPath = "Prefabs/AdrianaBenedetti"; 
-    [SerializeField] private Transform spawnPointTransform; // Arrastra un Empty GameObject aquí para definir la posición
-    [SerializeField] private AutoDialogueManager autoDialogos;                   // Referencia opcional; si no se asigna, se agrega automáticamente
+    [SerializeField] private string prefabPath = "Prefabs/AdrianaBenedetti";
+    [SerializeField] private Transform spawnPointTransform; // Arrastra un Empty GameObject aquí para definir la posición (usado en la secuencia original)
+    [SerializeField] private Transform musicBoxSpawnPointTransform; // Arrastra un Empty GameObject aquí para definir la posición fija al recoger la Music Box
+    [SerializeField] private Transform playerSpawnPoint; // Arrastra el Transform SpawnNextPlayer del player aquí (usado cuando todas las misiones están completadas)
+    [SerializeField] private AutoDialogueManager autoDialogos; // Referencia opcional; si no se asigna, se agrega automáticamente
 
     private GameObject npcInstance;
-    private bool secuenciaIniciada = false; // Flag para evitar múltiples llamadas
+    private bool secuenciaIniciada = false; // Flag para evitar múltiples llamadas en la secuencia original
+    private bool musicBoxSecuenciaIniciada = false; // Flag para evitar múltiples llamadas en la secuencia de Music Box
+    private bool allMissionsSecuenciaIniciada = false; // Flag para evitar múltiples llamadas en la secuencia de todas las misiones completadas
 
     private void Awake()
     {
@@ -18,6 +22,7 @@ public class AdrianaBenedetti : MonoBehaviour
         }
     }
 
+    // Método original para aparecer tras entrada a la mansión
     public void AparecerTrasEntradaMansion()
     {
         if (secuenciaIniciada)
@@ -28,6 +33,58 @@ public class AdrianaBenedetti : MonoBehaviour
 
         secuenciaIniciada = true;
         StartCoroutine(SecuenciaAdriana());
+    }
+
+    // Método para activar cuando se recoja la Music Box
+    public void OnMusicBoxCollected()
+    {
+        if (musicBoxSecuenciaIniciada)
+        {
+            Debug.LogWarning("AdrianaBenedetti: Secuencia de Music Box ya iniciada. Ignorando llamada duplicada.");
+            return;
+        }
+
+        musicBoxSecuenciaIniciada = true;
+        StartCoroutine(SecuenciaMusicBox());
+    }
+
+    // Método para activar cuando todos los NPCs excepto Adriana estén en estado 2 (es decir, que el player haya interactuado con ellos dada la pista)
+    public void OnAllMissionsCompleted()
+    {
+        if (allMissionsSecuenciaIniciada)
+        {
+            Debug.LogWarning("AdrianaBenedetti: Secuencia de todas las misiones ya iniciada. Ignorando llamada duplicada.");
+            return;
+        }
+
+        allMissionsSecuenciaIniciada = true;
+        StartCoroutine(SecuenciaAllMissions());
+    }
+
+    // Método para verificar si todos los NPCs están en estado 2 y aparecer si es así
+    public void CheckAndAppearIfAllCompleted()
+    {
+        NPCController[] allNPCs = Object.FindObjectsByType<NPCController>(FindObjectsSortMode.None);
+        bool allCompleted = true;
+
+        foreach (NPCController npc in allNPCs)
+        {
+            if (npc.NPCState != 2)
+            {
+                allCompleted = false;
+                break;
+            }
+        }
+
+        if (allCompleted)
+        {
+            Debug.Log("AdrianaBenedetti: Todos los NPCs están en estado 2. Activando secuencia de todas las misiones completadas.");
+            OnAllMissionsCompleted();
+        }
+        else
+        {
+            Debug.Log("AdrianaBenedetti: No todos los NPCs están en estado 2 aún.");
+        }
     }
 
     private IEnumerator SecuenciaAdriana()
@@ -52,14 +109,14 @@ public class AdrianaBenedetti : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         Debug.Log("AdrianaBenedetti: Llamando a SpawnNPC.");
-        SpawnNPC();
+        SpawnNPC(); // Usa el spawnPointTransform fijo
 
         if (autoDialogos != null)
         {
             autoDialogos.LanzarDialogo("PuertaCerrada");
             Debug.Log("AdrianaBenedetti: Diálogo PuertaCerrada lanzado. Esperando a que termine.");
 
-            //Espera a que termine PuertaCerrada
+            // Espera a que termine PuertaCerrada
             yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
             Debug.Log("AdrianaBenedetti: Diálogo PuertaCerrada terminado. Desapareciendo Adriana.");
@@ -75,11 +132,98 @@ public class AdrianaBenedetti : MonoBehaviour
         }
     }
 
-    private void SpawnNPC()
+    // Corroutina para la secuencia de Music Box, ahora usa el spawn point fijo
+    private IEnumerator SecuenciaMusicBox()
     {
-        if (spawnPointTransform == null)
+        if (DialogueManager.Instance == null)
         {
-            Debug.LogError("AdrianaBenedetti: spawnPointTransform no asignado. Arrastra un Empty GameObject al campo en el Inspector.");
+            Debug.LogError("AdrianaBenedetti: DialogueManager.Instance no encontrado.");
+            yield break;
+        }
+
+        // Verifica que el spawn point esté asignado
+        if (musicBoxSpawnPointTransform == null)
+        {
+            Debug.LogError("AdrianaBenedetti: musicBoxSpawnPointTransform no asignado. Arrastra un Empty GameObject al campo en el Inspector para definir la posición.");
+            yield break;
+        }
+
+        Debug.Log("AdrianaBenedetti: Spawneando Adriana en el spawn point fijo para Music Box.");
+        SpawnNPC(musicBoxSpawnPointTransform.position, musicBoxSpawnPointTransform.rotation); // Usa el spawn point fijo
+
+        if (autoDialogos != null)
+        {
+            autoDialogos.LanzarDialogo("FoundAdrianaObject");
+            Debug.Log("AdrianaBenedetti: Diálogo FoundAdrianaObject lanzado. Esperando a que termine.");
+
+            // Espera a que termine FoundAdrianaObject
+            yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
+
+            Debug.Log("AdrianaBenedetti: Diálogo FoundAdrianaObject terminado. Desapareciendo Adriana.");
+            Desaparecer();
+
+            // Lanza automáticamente "AdrianaLaughSecondTime" justo después de que Adriana desaparezca
+            Debug.Log("AdrianaBenedetti: Lanzando diálogo AdrianaLaughSecondTime.");
+            autoDialogos.LanzarDialogo("AdrianaLaughSecondTime");
+        }
+        else
+        {
+            Debug.LogError("AdrianaBenedetti: AutoDialogueManager no disponible.");
+        }
+    }
+
+    // Corroutina para la secuencia de todas las misiones completadas
+    private IEnumerator SecuenciaAllMissions()
+    {
+        if (DialogueManager.Instance == null)
+        {
+            Debug.LogError("AdrianaBenedetti: DialogueManager.Instance no encontrado.");
+            yield break;
+        }
+
+        // Espera a que termine cualquier diálogo activo antes de proceder
+        if (DialogueManager.Instance.IsDialogueActive())
+        {
+            Debug.Log("AdrianaBenedetti: Esperando a que termine el diálogo activo antes de spawnear Adriana.");
+            yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
+        }
+
+        // Verifica que el spawn point del player esté asignado
+        if (playerSpawnPoint == null)
+        {
+            Debug.LogError("AdrianaBenedetti: playerSpawnPoint no asignado. Arrastra el Transform SpawnNextPlayer del player al campo en el Inspector.");
+            yield break;
+        }
+
+        Debug.Log("AdrianaBenedetti: Spawneando Adriana en el SpawnNextPlayer del player para todas las misiones completadas.");
+        SpawnNPC(playerSpawnPoint.position, playerSpawnPoint.rotation); // Usa el spawn point del player
+
+        if (autoDialogos != null)
+        {
+            autoDialogos.LanzarDialogo("AllMisionsCompleted");
+            Debug.Log("AdrianaBenedetti: Diálogo AllMisionsCompleted lanzado. Esperando a que termine.");
+
+            // Espera a que termine AllMisionsCompleted
+            yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
+
+            Debug.Log("AdrianaBenedetti: Diálogo AllMisionsCompleted terminado. Desapareciendo Adriana.");
+            Desaparecer();
+        }
+        else
+        {
+            Debug.LogError("AdrianaBenedetti: AutoDialogueManager no disponible.");
+        }
+    }
+
+    // Ahora acepta posición y rotación opcionales (si no se pasan, usa spawnPointTransform)
+    private void SpawnNPC(Vector3? customPosition = null, Quaternion? customRotation = null)
+    {
+        Vector3 position = customPosition ?? (spawnPointTransform != null ? spawnPointTransform.position : Vector3.zero);
+        Quaternion rotation = customRotation ?? (spawnPointTransform != null ? spawnPointTransform.rotation : Quaternion.identity);
+
+        if (position == Vector3.zero && spawnPointTransform == null)
+        {
+            Debug.LogError("AdrianaBenedetti: Ni spawnPointTransform asignado ni posición personalizada proporcionada.");
             return;
         }
 
@@ -91,15 +235,15 @@ public class AdrianaBenedetti : MonoBehaviour
                 Debug.LogError($"AdrianaBenedetti: No se encontró el prefab en Resources/{prefabPath}. Verifica la ruta y el nombre.");
                 return;
             }
-            npcInstance = Instantiate(prefab, spawnPointTransform.position, spawnPointTransform.rotation);
-            Debug.Log("AdrianaBenedetti: Adriana spawneada exitosamente en la posición del spawnPointTransform.");
+            npcInstance = Instantiate(prefab, position, rotation);
+            Debug.Log("AdrianaBenedetti: Adriana spawneada exitosamente.");
         }
         else
         {
-            npcInstance.transform.position = spawnPointTransform.position;
-            npcInstance.transform.rotation = spawnPointTransform.rotation;
+            npcInstance.transform.position = position;
+            npcInstance.transform.rotation = rotation;
             npcInstance.SetActive(true);
-            Debug.Log("AdrianaBenedetti: Adriana reposicionada y activada en la posición del spawnPointTransform.");
+            Debug.Log("AdrianaBenedetti: Adriana reposicionada y activada.");
         }
     }
 

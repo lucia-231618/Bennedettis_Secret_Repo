@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5029868920109907308}
   - component: {fileID: 7639916242202210112}
   - component: {fileID: -7546652094667982965}
+  - component: {fileID: 2529826367258652901}
   m_Layer: 0
   m_Name: AdrianaBenedetti
   m_TagString: Untagged
@@ -160,3 +161,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4, y: 6.17}
   m_EdgeRadius: 0
+--- !u!114 &2529826367258652901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6373835521549749809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bbb63e9921115428b4db7d2c551d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AdrianaBenedetti
+  prefabPath: Prefabs/AdrianaBenedetti
+  spawnPointTransform: {fileID: 0}
+  musicBoxSpawnPointTransform: {fileID: 0}
+  autoDialogos: {fileID: 0}
+  allMissionsCompletedDialogue: {fileID: 11400000, guid: d45d6880a7e36a74489a70424eb488a3, type: 2}

@@ -12,6 +12,8 @@ public class NPCController : MonoBehaviour
     [Header("Configuración")]
     public string itemRequired;
 
+
+    public int NPCState => npcState;
     private int npcState = 0;
     private Collider2D triggerCollider;
     private bool playerInTrigger = false;
@@ -24,8 +26,20 @@ public class NPCController : MonoBehaviour
         triggerCollider = GetComponent<Collider2D>();
         if (triggerCollider != null) triggerCollider.isTrigger = true;
 
+        // Carga el estado desde PlayerPrefs
         npcState = PlayerPrefs.GetInt(stateKey, 0);
-        Debug.Log($"{gameObject.name}: Estado cargado: {npcState}");
+        Debug.Log($"{gameObject.name}: Estado cargado desde PlayerPrefs: {npcState}");
+
+        // Protección contra estados inválidos (si >2, resetea a 0)
+        if (npcState > 2 || npcState < 0)
+        {
+            Debug.LogWarning($"{gameObject.name}: Estado inválido ({npcState}), reseteando a 0.");
+            npcState = 0;
+            PlayerPrefs.SetInt(stateKey, npcState);
+            PlayerPrefs.Save();
+        }
+
+        Debug.Log($"{gameObject.name}: Estado final después de validación: {npcState}");
     }
 
     private void OnDestroy()
@@ -111,7 +125,7 @@ public class NPCController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"{gameObject.name}: Diálogo terminado: {endedDialogue.name}");
+        Debug.Log($"{gameObject.name}: Diálogo terminado: {endedDialogue.name}, Estado antes: {npcState}");
 
         // Comparación por nombre del asset (más robusta que == para ScriptableObjects)
         if (endedDialogue.name == dialogue1?.name)
@@ -125,7 +139,19 @@ public class NPCController : MonoBehaviour
             Debug.Log($"{gameObject.name}: Estado cambiado a 2 (después de dialogueWithItem)");
         }
 
+        // Guardar primero en PlayerPrefs
         PlayerPrefs.SetInt(stateKey, npcState);
         PlayerPrefs.Save();
+        Debug.Log($"{gameObject.name}: Estado guardado: {npcState}");
+
+        // Ahora verificar si todos los NPCs están en estado 2 y activar Adriana (después de guardar)
+        if (endedDialogue.name == dialogueWithItem?.name)
+        {
+            AdrianaBenedetti adriana = UnityEngine.Object.FindFirstObjectByType<AdrianaBenedetti>();
+            if (adriana != null)
+            {
+                adriana.CheckAndAppearIfAllCompleted();
+            }
+        }
     }
 }

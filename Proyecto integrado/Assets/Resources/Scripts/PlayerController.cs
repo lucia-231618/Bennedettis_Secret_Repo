@@ -30,9 +30,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        // Si hay diálogo activo, no hacemos nada
+        // Si hay diálogo activo, detenemos el movimiento y vamos a idle
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive())
+        {
+            // Resetear velocidad y animación para forzar idle
+            playerRb.linearVelocity = new Vector2(0, playerRb.linearVelocity.y); // Detener movimiento horizontal, mantener vertical (por gravedad)
+            anim.SetBool("Walking", false); // Forzar animación idle
             return;
+        }
 
         Movement();
         Flip();
