@@ -48,7 +48,7 @@ public class AdrianaBenedetti : MonoBehaviour
         }
 
         // Espera 1 segundos antes de spawnear y hablar
-        Debug.Log("AdrianaBenedetti: Esperando 2 segundos antes de spawnear Adriana.");
+        Debug.Log("AdrianaBenedetti: Esperando 1 segundos antes de spawnear Adriana.");
         yield return new WaitForSeconds(1f);
 
         Debug.Log("AdrianaBenedetti: Llamando a SpawnNPC.");
@@ -64,6 +64,10 @@ public class AdrianaBenedetti : MonoBehaviour
 
             Debug.Log("AdrianaBenedetti: Diálogo PuertaCerrada terminado. Desapareciendo Adriana.");
             Desaparecer();
+
+            // Lanza automáticamente "AdrianaLaughFirstTime" justo después de que Adriana desaparezca
+            Debug.Log("AdrianaBenedetti: Lanzando diálogo AdrianaLaughFirstTime.");
+            autoDialogos.LanzarDialogo("AdrianaLaughFirstTime");
         }
         else
         {
