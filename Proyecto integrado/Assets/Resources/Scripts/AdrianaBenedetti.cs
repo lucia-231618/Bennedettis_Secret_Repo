@@ -126,16 +126,48 @@ public class AdrianaBenedetti : MonoBehaviour
             yield break;
         }
 
-        // Verifica que el spawn point esté asignado
         if (musicBoxSpawnPointTransform == null)
         {
-            Debug.LogError("AdrianaBenedetti: musicBoxSpawnPointTransform no asignado. Arrastra un Empty GameObject al campo en el Inspector para definir la posición.");
+            Debug.LogError("AdrianaBenedetti: musicBoxSpawnPointTransform no asignado.");
             yield break;
         }
 
-        Debug.Log("AdrianaBenedetti: Spawneando Adriana en el spawn point fijo para Music Box.");
-        SpawnNPC(musicBoxSpawnPointTransform.position, musicBoxSpawnPointTransform.rotation); // Usa el spawn point fijo
+        // Spawnea Adriana instantáneamente
+        if (npcInstance == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>(prefabPath);
+            if (prefab == null)
+            {
+                Debug.LogError($"AdrianaBenedetti: No se encontró el prefab en Resources/{prefabPath}.");
+                yield break;
+            }
 
+            npcInstance = Instantiate(prefab, musicBoxSpawnPointTransform.position, musicBoxSpawnPointTransform.rotation);
+        }
+        else
+        {
+            npcInstance.transform.position = musicBoxSpawnPointTransform.position;
+            npcInstance.transform.rotation = musicBoxSpawnPointTransform.rotation;
+            npcInstance.SetActive(true);
+        }
+
+        // Espera un frame para asegurar que Unity renderice el objeto
+        yield return null;
+
+        if (npcInstance != null)
+        {
+            Debug.Log("Adriana spawneada en: " + npcInstance.transform.position + ", Activa: " + npcInstance.activeSelf);
+            SpriteRenderer[] renderers = npcInstance.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var r in renderers)
+            {
+                Debug.Log("Renderer en " + r.gameObject.name + " - Alpha: " + r.color.a + ", Sprite asignado: " + (r.sprite != null) + ", Enabled: " + r.enabled);
+            }
+        }
+        else
+        {
+            Debug.LogError("Adriana no se spawneó correctamente.");
+        }
+        
         if (autoDialogos != null)
         {
             autoDialogos.LanzarDialogo("FoundAdrianaObject");
@@ -147,15 +179,16 @@ public class AdrianaBenedetti : MonoBehaviour
             Debug.Log("AdrianaBenedetti: Diálogo FoundAdrianaObject terminado. Desapareciendo Adriana.");
             Desaparecer();
 
-            // Lanza automáticamente "AdrianaLaughSecondTime" justo después de que Adriana desaparezca
-            Debug.Log("AdrianaBenedetti: Lanzando diálogo AdrianaLaughSecondTime.");
+            // Lanza automáticamente "AdrianaLaughSecondTime"
             autoDialogos.LanzarDialogo("AdrianaLaughSecondTime");
+            Debug.Log("AdrianaBenedetti: Lanzando diálogo AdrianaLaughSecondTime.");
         }
         else
         {
             Debug.LogError("AdrianaBenedetti: AutoDialogueManager no disponible.");
         }
     }
+
 
     // Corroutina para la secuencia de todas las misiones completadas
     private IEnumerator SecuenciaAllMissions()
@@ -200,7 +233,7 @@ public class AdrianaBenedetti : MonoBehaviour
         }
     }
 
-    public Coroutine SpawnNPC(Vector3? customPosition = null, Quaternion? customRotation = null)
+    public Coroutine SpawnNPC(Vector3? customPosition = null, Quaternion? customRotation = null, bool skipFade = false)
     {
         Vector3 position = customPosition ?? (spawnPointTransform != null ? spawnPointTransform.position : Vector3.zero);
         Quaternion rotation = customRotation ?? (spawnPointTransform != null ? spawnPointTransform.rotation : Quaternion.identity);
@@ -222,14 +255,14 @@ public class AdrianaBenedetti : MonoBehaviour
 
             npcInstance = Instantiate(prefab, position, rotation);
 
-            if (primeraAparicion)
+            if (primeraAparicion && !skipFade)
             {
                 primeraAparicion = false;
-                // Devuelve la corrutina para que se pueda esperar en SecuenciaAdriana
                 return StartCoroutine(FadeInNPC());
             }
 
-            Debug.Log("AdrianaBenedetti: Adriana spawneada exitosamente.");
+            primeraAparicion = false; // marcar que ya apareció aunque se salte el fade
+            Debug.Log("AdrianaBenedetti: Adriana spawneada instantáneamente.");
         }
         else
         {
