@@ -52,9 +52,52 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        // Check de null para dialogue
+        if (dialogue == null)
+        {
+            Debug.LogError("[DialogueManager] StartDialogue llamado con dialogue null. Revisa AutoDialogueManager.cs.");
+            return;
+        }
+
+        Debug.Log($"[DialogueManager] Iniciando diálogo: {dialogue.name}");
+
+        // Verificar si es un diálogo especial y cambiar escena en lugar de mostrarlo
+        if (dialogue.name == "PassTheGame")
+        {
+            if (SceneController.Instance == null)
+            {
+                Debug.LogError("[DialogueManager] SceneController.Instance es null. Asegúrate de que SceneController esté en la escena.");
+                return;
+            }
+            SceneController.Instance.LoadScene("VICTORY");
+            return; // No iniciar el diálogo normal
+        }
+        else if (dialogue.name == "EndGame")
+        {
+            if (SceneController.Instance == null)
+            {
+                Debug.LogError("[DialogueManager] SceneController.Instance es null. Asegúrate de que SceneController esté en la escena.");
+                return;
+            }
+            SceneController.Instance.LoadScene("ENDGAME");
+            return; // No iniciar el diálogo normal
+        }
+
+        // Si no es especial, proceder con el diálogo normal
         currentDialogue = dialogue;
         currentLineIndex = 0;
         isDialogueActive = true;
+
+        // Cambiar estado del juego a Dialogue (check de null)
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("[DialogueManager] GameManager.Instance es null. Asegúrate de que GameManager esté en la escena.");
+        }
+        else
+        {
+            GameManager.Instance.SetState(GameManager.GameState.Dialogue);
+        }
+
         ShowCurrentLine();
     }
 
@@ -63,16 +106,10 @@ public class DialogueManager : MonoBehaviour
         if (currentDialogue == null) return;
 
         DialogueLine line = currentDialogue.lines[currentLineIndex];
-        Debug.Log($"[DialogueManager] Mostrando línea {currentLineIndex}: {line.character} -> {line.text}");
 
         if (line.sound != null)
         {
             audioSource.PlayOneShot(line.sound);
-            Debug.Log($"[DialogueManager] Reproduciendo sonido para línea {currentLineIndex}: {line.sound.name}");
-        }
-        else
-        {
-            Debug.Log($"[DialogueManager] No hay sonido para línea {currentLineIndex}");
         }
 
         dialoguePanel.ShowDialogue(line.character, line.text);
@@ -118,6 +155,12 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialoguePanel.HideDialogue();
+
+        // Revertir estado del juego a Exploring (check de null)
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SetState(GameManager.GameState.Exploring);
+        }
 
         // Invocar el evento ANTES de resetear currentDialogue
         EndDialogueEvent?.Invoke(currentDialogue);

@@ -21,15 +21,15 @@ public class DialogueLine
 {
     public string character;
     public string text;
-    // Clip de audio opcional para esta línea (ej. risa, efecto)
     public AudioClip sound;
 }
 
 [System.Serializable] 
 public class DialogueChoice
 {
-    public string choiceText;       // Texto de la elección (seguramente nombres)
-    public Sprite choiceImage;      // Imagen de las elecciones
-    public Dialogue nextDialogue;   // Qué diálogo se dispara si lo elige
+    [Tooltip("Index of the button in DialoguePanel's choiceButtons array (0 for first button, 1 for second, etc.).")]
+    public int buttonIndex = 0;  // Índice para seleccionar el botón fijo
+    [Tooltip("The next dialogue to load if this choice is selected.")]
+    public Dialogue nextDialogue;
 }
 

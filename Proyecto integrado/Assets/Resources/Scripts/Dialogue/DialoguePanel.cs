@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 using TMPro;
 
 public class DialoguePanel : MonoBehaviour
@@ -12,7 +12,7 @@ public class DialoguePanel : MonoBehaviour
 
     [Header("Opciones")]
     [SerializeField] private GameObject choicesContainer; // Panel que contendrá los botones de las elecciones (Objeto vacío)
-    [SerializeField] private GameObject choiceButtonPrefab; // Prefab de botón con imagen + texto
+    [SerializeField] private GameObject[] choiceButtons; // Array de los botones fijos (arrastra cada uno aquí desde el Inspector)
 
     private Coroutine typingCoroutine;
     private bool typingCoroutineRunning = false; // controla si la animación está activa
@@ -20,15 +20,14 @@ public class DialoguePanel : MonoBehaviour
     private string currentLineText; // guarda el texto completo de la línea actual
     public bool TypingCoroutineRunning => typingCoroutineRunning;
 
-
-    private void Awake() //Para q al iniciar el juego esté apagado
+    private void Awake() // Para que al iniciar el juego esté apagado
     {
-        dialoguePanel.SetActive(false); 
+        dialoguePanel.SetActive(false);
         choicesContainer.SetActive(false);
     }
 
     public void ShowDialogue(string character, string text)
-       {
+    {
         dialoguePanel.SetActive(true);
         choicesContainer.SetActive(false);
 
@@ -73,39 +72,69 @@ public class DialoguePanel : MonoBehaviour
         }
     }
 
-    // Mostrar botones de elección
+    // Mostrar botones de elección (usando índices para asignar botones fijos)
     public void ShowChoices(DialogueChoice[] choices)
     {
+        if (choiceButtons == null || choiceButtons.Length == 0)
+        {
+            Debug.LogError("choiceButtons no está asignado o vacío en DialoguePanel. Arrastra los botones fijos al array en el Inspector.");
+            return;
+        }
+
         choicesContainer.SetActive(true);
 
-        // Limpiar botones antiguos
-        foreach (Transform child in choicesContainer.transform)
-            Destroy(child.gameObject);
+        // Limpiar listeners antiguos para evitar duplicados
+        foreach (GameObject buttonObj in choiceButtons)
+        {
+            if (buttonObj != null)
+            {
+                Button buttonComp = buttonObj.GetComponent<Button>();
+                if (buttonComp != null)
+                {
+                    buttonComp.onClick.RemoveAllListeners(); // Limpiar listeners previos
+                }
+            }
+        }
 
-        // Crear botones nuevos
+        // Desactivar todos los botones primero
+        foreach (GameObject buttonObj in choiceButtons)
+        {
+            if (buttonObj != null)
+            {
+                buttonObj.SetActive(false);
+            }
+        }
+
+        // Configurar cada botón basado en el índice de la choice
         foreach (DialogueChoice choice in choices)
         {
-            GameObject buttonObj = Instantiate(choiceButtonPrefab, choicesContainer.transform);
+            int index = choice.buttonIndex;
+            if (index < 0 || index >= choiceButtons.Length)
+            {
+                Debug.LogWarning($"buttonIndex {index} está fuera de rango. Usando índice 0 por defecto.");
+                index = 0;
+            }
 
-            TextMeshProUGUI buttonText = buttonObj.GetComponentInChildren<TextMeshProUGUI>();
-            Image buttonImage = buttonObj.GetComponentInChildren<Image>();
+            GameObject buttonObj = choiceButtons[index];
+            if (buttonObj == null) continue; // Saltar si el botón es null
 
-            if (buttonText != null) buttonText.text = choice.choiceText;
-            if (buttonImage != null && choice.choiceImage != null) buttonImage.sprite = choice.choiceImage;
+            buttonObj.SetActive(true); // Activar el botón
 
+            // Configurar onClick
             Button buttonComp = buttonObj.GetComponent<Button>();
             if (buttonComp != null)
             {
                 buttonComp.onClick.AddListener(() =>
                 {
                     choicesContainer.SetActive(false);
+                    // Asume que tienes un DialogueManager con este método
                     DialogueManager.Instance.OnChoiceSelected(choice);
                 });
             }
         }
     }
 
-    public void HideDialogue() //Volver a apagarlo
+    public void HideDialogue() // Volver a apagarlo
     {
         dialoguePanel.SetActive(false);
         choicesContainer.SetActive(false);
