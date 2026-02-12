@@ -1,26 +1,32 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class MenuController : MonoBehaviour
 {
-    public Animator menuAnimator;           // animator del menú
+    public VideoPlayer videoPlayer;
     public float tiempoAnimacion = 5f;      // duración antes de cargar nivel
 
     void Start()
     {
-        if (menuAnimator != null)
-            menuAnimator.speed = 0f; // empieza congelado
+
+        if (videoPlayer != null)
+        {
+            videoPlayer.Play();   // lo arrancamos
+            videoPlayer.Pause();  // lo dejamos congelado en el primer frame
+
+            videoPlayer.loopPointReached += OnVideoFinished;
+        }
     }
 
     // Botón Jugar
     public void PlayGame()
     {
-        if (menuAnimator != null)
-            menuAnimator.speed = 1f; // inicia animación
 
-        Invoke(nameof(CargarNivel), tiempoAnimacion);
+        if (videoPlayer != null)
+            videoPlayer.Play();
     }
 
-    void CargarNivel()
+    void OnVideoFinished(VideoPlayer vp)
     {
         SceneController.Instance.LoadScene("LEVELPLAY");
     }

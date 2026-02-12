@@ -6169,7 +6169,7 @@ MonoBehaviour:
   spawnPointTransform: {fileID: 843213769}
   musicBoxSpawnPointTransform: {fileID: 1922819863}
   playerSpawnPoint: {fileID: 2056715815}
-  autoDialogos: {fileID: 0}
+  autoDialogos: {fileID: 1359165989}
 --- !u!1001 &1365987776
 PrefabInstance:
   m_ObjectHideFlags: 0

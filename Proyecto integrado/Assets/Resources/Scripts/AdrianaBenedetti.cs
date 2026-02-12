@@ -14,14 +14,6 @@ public class AdrianaBenedetti : MonoBehaviour
     private bool musicBoxSecuenciaIniciada = false; // Flag para evitar múltiples llamadas en la secuencia de Music Box
     private bool allMissionsSecuenciaIniciada = false; // Flag para evitar múltiples llamadas en la secuencia de todas las misiones completadas
 
-    private void Awake()
-    {
-        if (autoDialogos == null)
-        {
-            autoDialogos = gameObject.AddComponent<AutoDialogueManager>();
-        }
-    }
-
     // Método original para aparecer tras entrada a la mansión
     public void AparecerTrasEntradaMansion()
     {
@@ -95,40 +87,30 @@ public class AdrianaBenedetti : MonoBehaviour
             yield break;
         }
 
-        if (DialogueManager.Instance.IsDialogueActive())
-        {
-            yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
-        }
-        else
-        {
-            Debug.LogWarning("AdrianaBenedetti: El diálogo EntradaMansion no parece estar activo. Procediendo.");
-        }
+        // pequeña pausa de seguridad
+        yield return null;
 
-        // Espera 1 segundos antes de spawnear y hablar
-        Debug.Log("AdrianaBenedetti: Esperando 1 segundos antes de spawnear Adriana.");
-        yield return new WaitForSeconds(1f);
+        Debug.Log("AdrianaBenedetti: Spawneando Adriana.");
+        SpawnNPC();
 
-        Debug.Log("AdrianaBenedetti: Llamando a SpawnNPC.");
-        SpawnNPC(); // Usa el spawnPointTransform fijo
+        yield return new WaitForSeconds(0.5f);
 
         if (autoDialogos != null)
         {
+            Debug.Log("AdrianaBenedetti: Lanzando PuertaCerrada.");
             autoDialogos.LanzarDialogo("PuertaCerrada");
-            Debug.Log("AdrianaBenedetti: Diálogo PuertaCerrada lanzado. Esperando a que termine.");
 
-            // Espera a que termine PuertaCerrada
+            yield return new WaitUntil(() => DialogueManager.Instance.IsDialogueActive());
             yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
-            Debug.Log("AdrianaBenedetti: Diálogo PuertaCerrada terminado. Desapareciendo Adriana.");
+            Debug.Log("AdrianaBenedetti: PuertaCerrada terminado. Desapareciendo Adriana.");
             Desaparecer();
 
-            // Lanza automáticamente "AdrianaLaughFirstTime" justo después de que Adriana desaparezca
-            Debug.Log("AdrianaBenedetti: Lanzando diálogo AdrianaLaughFirstTime.");
             autoDialogos.LanzarDialogo("AdrianaLaughFirstTime");
         }
         else
         {
-            Debug.LogError("AdrianaBenedetti: AutoDialogueManager no disponible.");
+            Debug.LogError("AdrianaBenedetti: AutoDialogueManager no asignado.");
         }
     }
 

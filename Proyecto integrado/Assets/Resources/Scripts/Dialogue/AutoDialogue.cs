@@ -14,7 +14,7 @@ public class AutoDialogueManager : MonoBehaviour
 
     private IEnumerator LanzarEntradaMansion()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         // Carga el ScriptableObject del diálogo por nombre
         Dialogue dialogo = Resources.Load<Dialogue>("Dialogues/EntradaMansion");
@@ -40,9 +40,6 @@ public class AutoDialogueManager : MonoBehaviour
 
     private IEnumerator LanzarDialogoCoroutine(string dialogueName, float delay, System.Action callback)
     {
-        if (delay > 0)
-            yield return new WaitForSeconds(delay);
-
         Dialogue dialogo = Resources.Load<Dialogue>($"Dialogues/{dialogueName}");
 
         if (dialogo == null)
@@ -50,12 +47,11 @@ public class AutoDialogueManager : MonoBehaviour
             Debug.LogWarning($"AutoDialogueManager: No se encontró el diálogo '{dialogueName}' en Resources/Dialogues/");
             yield break;
         }
+        yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
         DialogueManager.Instance.StartDialogue(dialogo);
 
         yield return new WaitUntil(() => DialogueManager.Instance.IsDialogueActive());
         yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
-
-        callback?.Invoke();
     }
 }

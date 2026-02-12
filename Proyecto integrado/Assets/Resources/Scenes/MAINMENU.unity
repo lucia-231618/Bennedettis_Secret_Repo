@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
   videoPlayer: {fileID: 1426177293}
-  panelUI: {fileID: 1814069225}
+  tiempoAnimacion: 5
 --- !u!4 &835581949
 Transform:
   m_ObjectHideFlags: 0
