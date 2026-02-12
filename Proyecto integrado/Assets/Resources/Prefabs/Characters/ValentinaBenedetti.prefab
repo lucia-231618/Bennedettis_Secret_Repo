@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 194276742200166218}
   - component: {fileID: 6227465374183380345}
   - component: {fileID: 2294938505223094605}
-  - component: {fileID: 7544078441978250550}
+  - component: {fileID: 2112505333618416414}
   m_Layer: 0
   m_Name: ValentinaBenedetti
   m_TagString: Ghost
@@ -161,7 +161,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.18, y: 9.25}
   m_EdgeRadius: 0
---- !u!114 &7544078441978250550
+--- !u!114 &2112505333618416414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,31 +170,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5354099894027938492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29f8574e27aa4141a808f7d7cee3b9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 77713713875c04d4aa601c61ef903e43, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogues:
-  - dialogue: {fileID: 11400000, guid: 3220d14999e5c8b4284cfeb4c44be661, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 0
-  - dialogue: {fileID: 11400000, guid: b83186f00cb60ef42ac354462b75839a, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 1
-  - dialogue: {fileID: 11400000, guid: 86c6a45acd897c24da9f518a7fa2337c, type: 2}
-    requiresItem: 1
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 0
-  - dialogue: {fileID: 11400000, guid: dff8e03ed74ad2b448c12da82c08cbb0, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 1
+  m_EditorClassIdentifier: Assembly-CSharp::NPCController
+  dialogue1: {fileID: 11400000, guid: 3220d14999e5c8b4284cfeb4c44be661, type: 2}
+  dialogueNoItem: {fileID: 11400000, guid: b83186f00cb60ef42ac354462b75839a, type: 2}
+  dialogueWithItem: {fileID: 11400000, guid: 86c6a45acd897c24da9f518a7fa2337c, type: 2}
+  dialogueFinal: {fileID: 11400000, guid: dff8e03ed74ad2b448c12da82c08cbb0, type: 2}
+  itemRequired: Necklace

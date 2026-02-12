@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5646352087648655281}
   - component: {fileID: 8339273237718479273}
   - component: {fileID: 1986278943636834864}
-  - component: {fileID: 6772055157182228802}
   - component: {fileID: 8110849563590091553}
+  - component: {fileID: 443853005186705200}
   m_Layer: 0
   m_Name: DonatelloBenedetti
   m_TagString: Ghost
@@ -115,43 +115,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6772055157182228802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865887949444362716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29f8574e27aa4141a808f7d7cee3b9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogues:
-  - dialogue: {fileID: 11400000, guid: b8976f609069dcc4fb69108b07abd13a, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 0
-  - dialogue: {fileID: 11400000, guid: 51b32307932b562489c74e980cf13f73, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 1
-  - dialogue: {fileID: 11400000, guid: 2faa9c782f6bf344eb75efad34e42a80, type: 2}
-    requiresItem: 1
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 0
-  - dialogue: {fileID: 11400000, guid: 7f2ae9a8164cdc1459c50b8dc115dee1, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 1
 --- !u!61 &8110849563590091553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -198,3 +161,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.13, y: 7.16}
   m_EdgeRadius: 0
+--- !u!114 &443853005186705200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865887949444362716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77713713875c04d4aa601c61ef903e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCController
+  dialogue1: {fileID: 11400000, guid: b8976f609069dcc4fb69108b07abd13a, type: 2}
+  dialogueNoItem: {fileID: 11400000, guid: 51b32307932b562489c74e980cf13f73, type: 2}
+  dialogueWithItem: {fileID: 11400000, guid: 2faa9c782f6bf344eb75efad34e42a80, type: 2}
+  dialogueFinal: {fileID: 11400000, guid: 7f2ae9a8164cdc1459c50b8dc115dee1, type: 2}
+  itemRequired: Pocket Watch

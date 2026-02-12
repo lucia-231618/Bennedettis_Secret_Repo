@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2414896074624014554}
   - component: {fileID: 515982409458395581}
   - component: {fileID: 289946768242136908}
-  - component: {fileID: 5252406288390634448}
+  - component: {fileID: 6098440825311019104}
   m_Layer: 0
   m_Name: AntonioBenedetti
   m_TagString: Ghost
@@ -161,7 +161,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.08, y: 8.3}
   m_EdgeRadius: 0
---- !u!114 &5252406288390634448
+--- !u!114 &6098440825311019104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,31 +170,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6912168398652750606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29f8574e27aa4141a808f7d7cee3b9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 77713713875c04d4aa601c61ef903e43, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogues:
-  - dialogue: {fileID: 11400000, guid: 030ee1217c05f864e95b5d3e3ceea227, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 0
-  - dialogue: {fileID: 11400000, guid: a77fbd0e9f5c88c48ab2338bcab9ec8a, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 1
-  - dialogue: {fileID: 0}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 0
-  - dialogue: {fileID: 11400000, guid: 5d7a611eb20802e4a84c07dcd9a01026, type: 2}
-    requiresItem: 0
-    itemName: 
-    requiresState: 0
-    stateName: 
-    canRepeat: 1
+  m_EditorClassIdentifier: Assembly-CSharp::NPCController
+  dialogue1: {fileID: 11400000, guid: 030ee1217c05f864e95b5d3e3ceea227, type: 2}
+  dialogueNoItem: {fileID: 11400000, guid: a77fbd0e9f5c88c48ab2338bcab9ec8a, type: 2}
+  dialogueWithItem: {fileID: 11400000, guid: ffda36810093a624eb2d46eb52c5feae, type: 2}
+  dialogueFinal: {fileID: 11400000, guid: 5d7a611eb20802e4a84c07dcd9a01026, type: 2}
+  itemRequired: Accounting Book
