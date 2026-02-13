@@ -64,6 +64,7 @@ public class DialogueManager : MonoBehaviour
         // Verificar si es un diálogo especial y cambiar escena en lugar de mostrarlo
         if (dialogue.name == "PassTheGame")
         {
+            ResetState();               
             if (SceneController.Instance == null)
             {
                 Debug.LogError("[DialogueManager] SceneController.Instance es null. Asegúrate de que SceneController esté en la escena.");
@@ -74,6 +75,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (dialogue.name == "EndGame")
         {
+            ResetState();
             if (SceneController.Instance == null)
             {
                 Debug.LogError("[DialogueManager] SceneController.Instance es null. Asegúrate de que SceneController esté en la escena.");
@@ -192,5 +194,16 @@ public class DialogueManager : MonoBehaviour
         }
 
         StartDialogue(dialogue);
+    }
+
+    public void ResetState()
+    {
+        currentDialogue = null;
+        currentLineIndex = 0;
+        isDialogueActive = false;
+
+        PlayerPrefs.DeleteAll();
+
+        Debug.Log("[DialogueManager] Estado reseteado por cambio de escena.");
     }
 }
